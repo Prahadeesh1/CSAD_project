@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #800000;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 2rem;
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+.movie-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.movie-item {
+    background-color: #800000;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    width: 70%;
+}
+
+.movie-item img {
+    width: 100px;
+    height: 150px;
+}
+
+.edit-options button, a {
+    display: block;
+    margin: 1rem auto;
+    padding: 0.5rem 2rem;
+    background-color: #fff;
+    color: #800000;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.edit-showtimes div {
+    margin: 1rem;
+}

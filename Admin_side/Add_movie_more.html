@@ -1,10 +1,99 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <link rel="stylesheet" href="CSS/Page_admin.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Management Form</title>
+    <link rel="stylesheet" href="CSS/Add_movie_more.css">
 </head>
 <body>
-    
- <h6>HIIIIIIIIIIIIIIIIIIIIIIIIII</h6>
+    <div class="container">
+        
+        
+
+        
+        <div class="add-movies">
+            <h1>Add Movies</h1>
+            <div class="form">
+                
+                <div class="section theaters">
+                    <h3>Select Theater Locations</h3>
+                    <select>
+                        <option>Clementi</option>
+                        <option>Bugis</option>
+                        <option>Capitol Theater</option>
+                        <option>Causeway Point</option>
+                        <option>Tampines</option>
+                        <option>Orchard</option>
+                        <option>City Square mall</option>
+                        <option>Bedok</option>
+                        <option>Pasir Ris</option>
+                        <option>River Valley</option>
+                        <option>Kallang</option>
+                        <option>Katong</option>
+                        <option>Jurong East</option>
+                        <option>Jewel</option>
+                        <option>Junction 8</option>
+                        <option>King Albert Park Mall</option>
+                        <option>CCK</option>
+                        <option>NEX</option>
+                        <option>Paya lebar</option>
+                        <option>Yishun</option>
+                    </select>
+                </div>
+
+                
+                <div class="section starting-week">
+                    <h3>Select Starting Week</h3>
+                    <div class="calendar">
+                        <p>DECEMBER 2024</p>
+                        <form>
+                            <label for="bdaymonth">Month and Year:</label>
+                            <input type="date" id="bdaymonth" name="bdaymonth">
+                            
+                          </form>
+                    </div>
+                </div>
+
+                
+                <div class="section theaters">
+                    <h3>Select Theater Locations</h3>
+                    <select>
+                        <option>9.00am</option>
+                        <option>10.00am</option>
+                        <option>11.00am</option>
+                        <option>12.00pm</option>
+                        <option>1.00pm</option>
+                        <option>2.00pm</option>
+                        <option>3.00pm</option>
+                        <option>4.00pm</option>
+                        <option>5.00pm</option>
+                        <option>6.00pm</option>
+                        <option>7.00pm</option>
+                        <option>8.00pm</option>
+                        <option>9.00pm</option>
+                        <option>10.00pm</option>
+                        <option>11.00pm</option>
+                        <option>12.00pm</option>
+                        <option>1.00am</option>
+                        
+                    </select>
+                </div>
+
+                
+                <div class="section movie-details">
+                    <input type="text" placeholder="Enter Movie Language">
+                    <input type="text" placeholder="Enter Movie Subtitles">
+                    <input type="number" placeholder="Enter Movie Runtime (mins)">
+                    <textarea placeholder="Enter Synopsis of the movie"></textarea>
+                </div>
+
+                
+                <div class="section add-button">
+                    <button onclick="document.location='Page_Admin.html'">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

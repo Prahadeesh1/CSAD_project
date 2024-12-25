@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #000;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    border: 2px solid #800080;
+    padding: 10px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #800000;
+    color: white;
+    padding: 10px 20px;
+}
+
+header .logo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+header nav a {
+    color: white;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.back-button {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+
+h1 {
+    text-align: center;
+    background-color: #800000;
+    color: white;
+    padding: 10px 0;
+}
+
+.movie-list {
+    margin-top: 10px;
+}
+
+.movie {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    margin: 10px 0;
+    background-color: #800000;
+    color: white;
+    padding: 10px;
+}
+
+.movie img {
+    width: 100px;
+    height: 150px;
+    margin-right: 20px;
+}
+
+.movie .details h2 {
+    margin: 0 0 10px 0;
+}
+
+.movie .details p {
+    margin: 5px 0;
+}
+
+.delete-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #555;
+}
