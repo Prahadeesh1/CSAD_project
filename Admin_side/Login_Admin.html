@@ -7,18 +7,19 @@
     <link rel="stylesheet" href="CSS/Login_admin.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <div class="header">
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Cinemas</a>
-            <a href="#">Experiences</a>
-            <a href="#">Shop</a>
-            <a href="#">Events Booking</a>
-        </nav>
-    </div>
-
+<!-- Header Navigation -->
+<div class="navbar">
+    <img src="image/logo.png" alt="Logo">
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">Cinemas</a>
+        <a href="#">Experiences</a>
+        <a href="#">Shop</a>
+        <a href="#">Events Booking</a>
+    </nav>
+</div>
+<!--Login Panel-->
     <div class="login-container">
         <div class="login-box">
             <h1>Admin Login</h1>
@@ -33,24 +34,21 @@
                 <button type="submit">Log In</button>
             </form>
         </div> 
-    </div>    
+    </div>
 
     <script>
-        
         document.getElementById('login').addEventListener('submit', function(event) {
             event.preventDefault(); 
 
-            
             const adminId = document.getElementById('admin-id').value;
             const password = document.getElementById('password').value;
 
-            
-            if (adminId === '123456' && password === 'hidumb') {
+            if (adminId === 'Praha123' && password === '123456') {
                 
                 window.location.href = 'Page_Admin.html'; 
             } else {
             
-                alert('Invalid Admin ID or Password. Please try again.');
+                alert('Invalid Admin ID or Password. Please try again!');
             }
         });
     </script>
