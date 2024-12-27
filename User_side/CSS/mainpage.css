@@ -1,3 +1,4 @@
+/*General*/
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,6 @@
 body {
     height: 100vh;
     background: #000000;
-    /*background: linear-gradient(to bottom,  black, rgb(116, 102, 102));*/
     display: flex;
     flex-direction: column;
 }
@@ -52,7 +52,7 @@ body {
 /* Slider Container */
 .slider-wrapper {
     position: relative;
-    max-width: 48rem; /* Set maximum width for the slider */
+    max-width: 50rem; /* Set maximum width for the slider */
     margin: 0 auto; /* Center the slider */
     overflow: hidden; /* Hide overflow to avoid scrollbars */
     aspect-ratio: 2.35 / 1; /* Maintain a 2.35:1 aspect ratio */
@@ -101,7 +101,8 @@ body {
 /* Second Navigation Bar */
 .sub-nav {
     background-color: #8b0000;
-    max-width: 48rem; /* Match the width of the banner slider */
+    width: 100%; /* Ensure it takes full width */
+    max-width: 1200px; /* Match the width of the main section */
     margin: 0 auto; /* Center align the navigation bar */
     color: white;
     padding: 0.5rem 0;
@@ -199,6 +200,22 @@ main {
     background: #d35400;
 }
 
+/* Visualbar Section */
+.visbar {
+    display: flex;
+    align-items: center; /* Align logo and images vertically */
+    justify-content: space-evenly; /* Evenly space the images */
+    padding: 0; /* Remove gaps around the container */
+    height: 80px; /* Fixed height for consistent layout */
+}
+/* Logo Styling */
+.visbar img {
+    height: 100%; /* Scale images to match the header height */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Keep image proportions */
+}
+
+
 
 /* Footer Section */
 footer {
@@ -270,4 +287,3 @@ footer p {
     font-size: 0.8rem;
     color: #aaa;
 }
-
