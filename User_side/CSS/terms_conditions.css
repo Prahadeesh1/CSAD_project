@@ -1,0 +1,152 @@
+/*General*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+body {
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.navbar {
+  display: flex;
+  align-items: center; /* Align logo and links vertically */
+  justify-content: space-between; /* Spread content across the header */
+  background-color: #8b0000;
+  color: white;
+  padding: 0; /* Remove gaps around the logo */
+  height: 80px; /* Fixed height for consistent layout */
+}
+/* Logo Styling */
+.navbar img {
+  height: 100%; /* Dynamically scale logo to header height */
+  max-height: 100%; /* Prevent overflow */
+  margin: 0; /* Remove any margin around the logo */
+  object-fit: contain; /* Keep logo proportions */
+}
+/* Navigation Links */
+.navbar nav {
+  display: flex;
+  justify-content: space-around; /* Spread links evenly across the available space */
+  flex: 1; /* Allow nav to take up remaining space after logo */
+}
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem; /* Make links bigger */
+  font-weight: bold; /* Make links bold */
+  text-align: center; /* Center text within the allocated space */
+  padding: 0; /* Remove additional padding */
+  flex: 1; /* Each link takes up equal space */
+}
+.navbar a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Footer Section */
+footer {
+  background: linear-gradient(to bottom, black, rgb(148, 0, 0));
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto; /* Push the footer to the bottom */
+}
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.footer-column {
+  text-align: left;
+  margin: 0.5rem 1rem;
+}
+.footer-column h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f39c12;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin: 0.3rem 0;
+}
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #f39c12;
+}
+
+/* Follow Us Section */
+.footer-social {
+  margin-top: 1rem;
+  text-align: center;
+}
+.footer-social h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f39c12;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between icons */
+}
+.social-icon {
+  display: inline-block;
+}
+.social-img {
+  width: 40px; /* Adjust size of the icons */
+  height: 40px;
+  transition: opacity 0.3s ease;
+}
+.social-icon:hover .social-img {
+  opacity: 0.7; /* Change opacity on hover */
+}
+/* Footer Text */
+footer p {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.terms-of-service {
+  background-color: #000000;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.terms-of-service h1 {
+  font-size: 24px;
+  color: #ff4500;
+  margin-bottom: 15px;
+}
+
+.terms-section {
+  margin-bottom: 15px;
+}
+
+.terms-section h2 {
+  font-size: 18px;
+  color: #00eeff;
+  margin-bottom: 10px;
+}
+
+.terms-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e7e7e7;
+  max-width: 1050px; /* Limit the width of the paragraph */
+}
