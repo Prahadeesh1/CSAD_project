@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frequently Asked Questions</title>
+
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="CSS/faq.css" />
+    <script>
+      // JavaScript for toggling FAQ answers and arrow direction
+      document.addEventListener("DOMContentLoaded", () => {
+        const questions = document.querySelectorAll(".faq-questions");
+        questions.forEach((question) => {
+          question.addEventListener("click", () => {
+            const answer = question.nextElementSibling;
+            const arrow = question.querySelector(".arrow");
+            answer.classList.toggle("active");
+            arrow.classList.toggle("up"); // Toggle the arrow direction
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <div class="navbar">
+      <img src="images/logo.png" alt="Logo" />
+      <nav>
+        <a href="main_page.html">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">Cinemas</a>
+        <a href="#">Experiences</a>
+        <a href="#">Shop</a>
+        <a href="#">Events Booking</a>
+      </nav>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="questions">
+      <h1>Frequently Asked Questions</h1>
+
+      <div class="faq">
+        <p class="faq-questions">
+          What should I do if I lose my ticket or make a wrong booking?<span
+            class="arrow"
+          ></span>
+        </p>
+        <p class="faq-answers">
+          Please proceed to the nearest PVC Cinema and seek assistance from our
+          staff.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          Can I refund or exchange my movie tickets?<span class="arrow"></span>
+        </p>
+        <p class="faq-answers">
+          Unfortunately, tickets are non-refundable and non-exchangeable. Please
+          double-check your bookings before finalizing your purchase.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          What are the payment methods for online booking?<span
+            class="arrow"
+          ></span>
+        </p>
+        <p class="faq-answers">We accept Mastercard, AMEX and Visa.</p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          Can I hold an event or book a hall at PrismVerse Cinematics?<span
+            class="arrow"
+          ></span>
+        </p>
+        <p class="faq-answers">
+          We welcome you to hold your events at PrismVerse Cinematics. <br />
+          Our venue can accommodate various functions, including corporate
+          meetings, weddings, private screenings and more. <br />
+          Please write to us at
+          <a href="mailto:booking@pvcinematics.com.sg"
+            >booking@pvcinematics.com.sg</a
+          >with your booking details and we will reply you within 3 working
+          days.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          Will my card details be stored in your system?<span
+            class="arrow"
+          ></span>
+        </p>
+        <p class="faq-answers">
+          We do not store any card details in our system. Your card details are
+          only used to be verified for payments.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          Can my child watch a rated movie?<span class="arrow"></span>
+        </p>
+        <p class="faq-answers">
+          Children below the age of 16 are able to watch movies that are rated
+          G, PG or PG13. Movies rated NC16, M18 or R21 are restricted to patrons
+          of the minimum required age of 18. Identification Card (IC) may be
+          requested by our staff for verification before admission.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          Will my card be charged if I do not collect the ticket(s)?<span
+            class="arrow"
+          ></span>
+        </p>
+        <p class="faq-answers">
+          Yes, as long as the transaction has been made, you will be charged.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          Are there any student or senior discounts?<span class="arrow"></span>
+        </p>
+        <p class="faq-answers">
+          Yes, students with valid concession cards and seniors above 60 will
+          enjoy ticket prices of $7.50, up from the standard price of $10.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          What are your operating hours?<span class="arrow"></span>
+        </p>
+        <p class="faq-answers">
+          We operate daily from Monday to Sunday, 11am to 12pm.
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">
+          What technologies are used in your cinemas.<span class="arrow"></span>
+        </p>
+        <p class="faq-answers">
+          At PVC Cinematics, we provide an exceptional cinematic experience with
+          cutting-edge technology. Our cinemas are equipped with
+          state-of-the-art sound systems, including high-definition speakers and
+          powerful subwoofers, ensuring crystal-clear audio and immersive
+          surround sound. Combined with our advanced projectors, every movie is
+          brought to life with stunning visuals and rich, dynamic soundscapes,
+          offering an unforgettable experience for all moviegoers."
+        </p>
+      </div>
+
+      <div class="faq">
+        <p class="faq-questions">How do I join?<span class="arrow"></span></p>
+        <p class="faq-answers">
+          We invite enthusiastic individuals who have keen interest working in
+          movie industry to join us as <a href="careers.html">careers</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>HOME</h3>
+          <ul>
+            <li><a href="#">Log In/Register</a></li>
+            <li>
+              <a href="../Admin_side/Login_Admin.html">Admin Page</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>LEGAL</h3>
+          <ul>
+            <li><a href="termsandconditions.html">Terms & Conditions</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>CUSTOMER SERVICES</h3>
+          <ul>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>ABOUT</h3>
+          <ul>
+            <li><a href="#">About PVC</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Follow Us Section -->
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a
+            href="https://www.facebook.com/"
+            class="social-icon facebook"
+            target="_blank"
+          >
+            <img src="images/facebook.jpg" alt="Facebook" class="social-img" />
+          </a>
+          <a
+            href="https://x.com/?lang=en"
+            class="social-icon X"
+            target="_blank"
+          >
+            <img src="images/x.jpg" alt="X" class="social-img" />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            class="social-icon instagram"
+            target="_blank"
+          >
+            <img
+              src="images/instagram.jpg"
+              alt="Instagram"
+              class="social-img"
+            />
+          </a>
+        </div>
+      </div>
+      <p>&copy; 2024 PrismVerse Cinematics Pte Ltd. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
