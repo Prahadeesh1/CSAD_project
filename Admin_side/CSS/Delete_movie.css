@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, black, rgb(116, 102, 102));
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+/* Header Section */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #8b0000;
+    color: white;
+    padding: 0;
+    height: 80px;
+    width: 100%; /* Ensure header spans the full width */
+    position: relative; /* Allow positioning of the back button */
+}
+
+/* Logo Styling */
+.navbar img {
+    height: 100%; /* Dynamically scale logo to header height */
+    max-height: 100%; /* Prevent overflow */
+    margin: 0; /* Remove any margin around the logo */
+    object-fit: contain; /* Keep logo proportions */
+}
+
+/* Navigation Links */
+.navbar nav {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    padding-right: 20px; /* Add padding to prevent links from sticking to the edge */
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    flex: 1;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Back Button Styling */
+.back-button {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background-color: #bb0101;
+}
+
+/* Headline Title */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* Movie Container */
+.movie-container {
+    width: 90%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* Movie Row */
+.movie-row {
+    display: flex;
+    justify-content: space-between;
+    background-color: #8b0000;
+    padding: 20px;
+    color: white;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.movie-select {
+    width: 25px;
+    height: 25px;
+    accent-color: #bb0101; /* Red theme */
+    cursor: pointer;
+}
+
+.movie-details {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+}
+
+.movie-poster {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.movie-info {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie-info h2 {
+    margin-bottom: 10px;
+}
+
+.movie-info p {
+    margin: 5px 0;
+}
+
+/* Popup Modal */
+.popup-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+.popup-content h2 {
+    color: #bb0101;
+}
+.popup-content p {
+    margin: 15px 0;
+}
+.popup-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.popup-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.popup-back {
+    background-color: gray;
+    color: white;
+}
+.popup-back:hover {
+    background-color: darkgray;
+}
+.popup-delete {
+    background-color: #bb0101;
+    color: white;
+}
+.popup-delete:hover {
+    background-color: red;
+}
+
+/* Delete Button Styling */
+.delete-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.delete-button:hover {
+    background-color: #bb0101;
+    color: white;
+}

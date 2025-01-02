@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Movies</title>
-    <link rel="stylesheet" href="CSS/Add_movie.css">
+    <title>Edit Movies Details</title>
+    <link rel="stylesheet" href="CSS/Edit_details.css">
 </head>
 <body>
 
 <!-- Back Button -->
-<button class="back-button" onclick="document.location='Movie_Sections.html'">Back to Sections</button>
+<button class="back-button" onclick="document.location='Edit_movies.html'">Back to Edit</button>
 
 <!-- Headline -->
-<h1>Add Movies</h1>
+<h1>Edit Movies Details</h1>
 
 <!-- Form Layout -->
 <div class="form-container">
@@ -20,69 +20,54 @@
     <div class="cover-container">
         <label for="upload-cover" class="add-cover">
             <input type="file" id="upload-cover" accept="image/*" />
-            Add Cover
+            Edit Cover
         </label>
         <img id="cover-preview" src="" alt="Cover Image" />
 
-        <!-- Dropdown for Sections -->
-        <label class="dropdown-title">Movie Sections</label>
-        <div class="dropdown single-select">
-            <div class="select">
-                <span class="selected">Now Showing</span>
-                <div class="caret"></div>
-            </div>
-            <ul class="menu">
-                <li class="active">Now Showing</li>
-                <li>Advanced Sales</li>
-            </ul>
-        </div>
-
-        <!-- Dropdown for Theaters -->
-        <label class="dropdown-title">Add Theaters</label>
-        <div class="dropdown multi-select">
-            <div class="select">
-                <span class="selected">Select Theaters</span>
-                <div class="caret"></div>
-            </div>
-            <ul class="menu">
-                <li><input type="checkbox" value="Theater 1"> Theater 1</li>
-                <li><input type="checkbox" value="Theater 2"> Theater 2</li>
-                <li><input type="checkbox" value="Theater 3"> Theater 3</li>
-                <li><input type="checkbox" value="Theater 4"> Theater 4</li>
-            </ul>
-        </div>
-    </div>
+     <!-- Dropdown for Sections -->
+     <label class="dropdown-title">Movie Sections</label>
+     <div class="dropdown single-select">
+         <div class="select">
+             <span class="selected">Now Showing</span>
+             <div class="caret"></div>
+         </div>
+         <ul class="menu">
+             <li class="active">Now Showing</li>
+             <li>Advanced Sales</li>
+         </ul>
+     </div>
+ </div>
 
     <!-- Movie Form -->
     <div class="movie-form">
         <div class="form-group">
-            <textarea placeholder="Enter Movie Title" rows="1"></textarea>
+            <textarea placeholder="Edit Movie Title" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Cast" rows="2"></textarea>
+            <textarea placeholder="Edit Cast" rows="2"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Director" rows="1"></textarea>
+            <textarea placeholder="Edit Director" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Movie Rating" rows="1"></textarea>
+            <textarea placeholder="Edit Movie Rating" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Movie Genre" rows="1"></textarea>
+            <textarea placeholder="Edit Movie Genre" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Movie Language" rows="1"></textarea>
+            <textarea placeholder="Edit Movie Language" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Movie Subtitles" rows="1"></textarea>
+            <textarea placeholder="Edit Movie Subtitles" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Movie Runtime (mins)" rows="1"></textarea>
+            <textarea placeholder="Edit Movie Runtime (mins)" rows="1"></textarea>
         </div>
         <div class="form-group">
-            <textarea placeholder="Enter Movie Synopsis" rows="5"></textarea>
+            <textarea placeholder="Edit Movie Synopsis" rows="5"></textarea>
         </div>
-        <button class="add-button">Add</button>
+        <button class="add-button">Update</button>
     </div>
 </div>
 
@@ -143,4 +128,3 @@
 
 </body>
 </html>
-
