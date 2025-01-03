@@ -1,165 +1,165 @@
 /* General */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial;
-    background: #000000;
-    color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  background: #000000;
+  color: #fff;
 }
 
 /* Header Section */
 .navbar {
-    display: flex;
-    align-items: center; /* Align logo and links vertically */
-    justify-content: space-between; /* Spread content across the header */
-    background-color: #8b0000;
-    color: white;
-    padding: 0; /* Remove gaps around the logo */
-    height: 80px; /* Fixed height to match main page */
+  display: flex;
+  align-items: center; /* Align logo and links vertically */
+  justify-content: space-between; /* Spread content across the header */
+  background-color: #8b0000;
+  color: white;
+  padding: 0; /* Remove gaps around the logo */
+  height: 80px; /* Fixed height to match main page */
 }
 /* Logo Styling */
 .navbar img {
-    height: 100%; /* Dynamically scale logo to header height */
-    max-height: 100%; /* Prevent overflow */
-    margin: 0; /* Remove margin to position the logo flush left */
-    object-fit: contain; /* Keep logo proportions */
+  height: 100%; /* Dynamically scale logo to header height */
+  max-height: 100%; /* Prevent overflow */
+  margin: 0; /* Remove margin to position the logo flush left */
+  object-fit: contain; /* Keep logo proportions */
 }
 /* Navigation Links */
 .navbar nav {
-    display: flex;
-    justify-content: space-around; /* Spread links evenly across available space */
-    flex: 1; /* Allow nav to take up remaining space after logo */
+  display: flex;
+  justify-content: space-around; /* Spread links evenly across available space */
+  flex: 1; /* Allow nav to take up remaining space after logo */
 }
 .navbar a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem; /* Match link size with the main page */
-    font-weight: bold; /* Make links bold */
-    text-align: center; /* Center text within the allocated space */
-    padding: 0; /* Remove additional padding */
-    flex: 1; /* Each link takes up equal space */
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem; /* Match link size with the main page */
+  font-weight: bold; /* Make links bold */
+  text-align: center; /* Center text within the allocated space */
+  padding: 0; /* Remove additional padding */
+  flex: 1; /* Each link takes up equal space */
 }
 .navbar a:hover {
-    text-decoration: underline; /* Add underline on hover */
+  text-decoration: underline; /* Add underline on hover */
 }
-
 
 /* Movie Details Section */
 .movie-details {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
 }
 .movie-title {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #f39c12;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #f39c12;
 }
 .details-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
 }
 .poster-container {
-    flex: 1 1 300px;
-    text-align: center;
+  flex: 1 1 300px;
+  text-align: center;
 }
 .poster-container img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 .info-container {
-    flex: 2 1 600px;
+  flex: 2 1 600px;
 }
 .info-container h2 {
-    font-size: 1.8rem;
-    color: #ff0000;
-    margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #ff0000;
+  margin-bottom: 1rem;
 }
 .info-container p {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-    line-height: 1.5;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  line-height: 1.5;
 }
 .extra-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 .extra-details div {
-    background: #222;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  background: #222;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Footer Section */
 footer {
-    background: linear-gradient(to bottom, black, rgb(148, 0, 0));
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
+  background: linear-gradient(to bottom, black, rgb(148, 0, 0));
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto; /* Push the footer to the bottom */
 }
 .footer-links {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 .footer-column {
-    text-align: left;
-    margin: 0.5rem 1rem;
+  text-align: left;
+  margin: 0.5rem 1rem;
 }
 .footer-column h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #f39c12;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f39c12;
 }
 .footer-column ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 .footer-column ul li {
-    margin: 0.3rem 0;
+  margin: 0.3rem 0;
 }
 .footer-column ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
 }
 .footer-column ul li a:hover {
-    color: #f39c12;
+  color: #f39c12;
 }
 .footer-social {
-    margin-top: 1rem;
-    text-align: center;
+  margin-top: 1rem;
+  text-align: center;
 }
 .footer-social h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #f39c12;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f39c12;
 }
 .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 .social-icon {
-    display: inline-block;
+  display: inline-block;
 }
 .social-img {
-    width: 40px;
-    height: 40px;
-    transition: opacity 0.3s ease;
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.3s ease;
 }
 .social-icon:hover .social-img {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 footer p {
-    font-size: 0.8rem;
-    color: #aaa;
+  font-size: 0.8rem;
+  color: #aaa;
 }
