@@ -1,97 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Details</title>
-    <link rel="stylesheet" href="CSS/moviedetails.css">
-</head>
-<body>
+    <link rel="stylesheet" href="CSS/moviedetails.css" />
+  </head>
+  <body>
     <!-- Header Navigation -->
     <div class="navbar">
-        <img src="images/logo.png" alt="Logo">
-        <nav>
-            <a href="#"onclick="document.location='main_page.html'">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Cinemas</a>
-            <a href="#">Experiences</a>
-            <a href="#">Shop</a>
-            <a href="#">Events Booking</a>
-        </nav>
+      <img src="images/logo.png" alt="Logo" />
+      <nav>
+        <a href="main_page.html" onclick="document.location='main_page.html'">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">Cinemas</a>
+        <a href="#">Experiences</a>
+        <a href="#">Shop</a>
+        <a href="#">Events Booking</a>
+      </nav>
     </div>
 
     <!-- Movie Details Section -->
     <main class="movie-details">
-        <div class="details-container">
-            <div class="poster-container">
-                <img src="images/transformersposter.jpg" alt="Movie Poster">
-            </div>
-            <div class="info-container">
-                <h1 class="movie-title">King Praha Story</h1>
-                <h2>Movie Details</h2>
-                <p><strong>Cast:</strong> Actor 1, Actor 2, Actor 3</p>
-                <p><strong>Director:</strong> Wang Hong Xiang</p>
-                <p><strong>Synopsis:</strong> Hi, this is a movie about king Praha who conquer the SEA and become the king of the kings.
-                </p>
-                <div class="extra-details">
-                    <div><strong>Genre:</strong> Action, Adventure</div>
-                    <div><strong>Language:</strong> English</div>
-                    <div><strong>Rating:</strong> PG-13</div>
-                    <div><strong>Runtime:</strong> 120 mins</div>
-                    <div><strong>Subtitle:</strong> English,Chinese</div>
-                </div>
-            </div>
+      <div class="details-container">
+        <div class="poster-container">
+          <img src="images/transformersposter.jpg" alt="Movie Poster" />
         </div>
+        <div class="info-container">
+          <h1 class="movie-title">King Praha Story</h1>
+          <h2>Movie Details</h2>
+          <p><strong>Cast:</strong> Actor 1, Actor 2, Actor 3</p>
+          <p><strong>Director:</strong> Wang Hong Xiang</p>
+          <p>
+            <strong>Synopsis:</strong> Hi, this is a movie about king Praha who
+            conquer the SEA and become the king of the kings.
+          </p>
+          <div class="extra-details">
+            <div><strong>Genre:</strong> Action, Adventure</div>
+            <div><strong>Language:</strong> English</div>
+            <div><strong>Rating:</strong> PG-13</div>
+            <div><strong>Runtime:</strong> 120 Mins</div>
+            <div><strong>Subtitle:</strong> English, Chinese</div>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <!-- Showtimes & Locations Section -->
+     <div class="showtime-location">
+      <h2>Select Cinemas & Time</h2>
+
+     </main>
 
     <!-- Footer Section -->
     <footer>
-        <div class="footer-links">
-            <div class="footer-column">
-                <h3>HOME</h3>
-                <ul>
-                    <li><a href="#">Log In/Register</a></li>
-                    <li><a href="#" onclick="document.location='Admin_side/Login_admin.html'">Admin Page</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>LEGAL</h3>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>CUSTOMER SERVICES</h3>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQs</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>ABOUT</h3>
-                <ul>
-                    <li><a href="#">About PVC</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>HOME</h3>
+          <ul>
+            <li><a href="#">Log In/Register</a></li>
+            <li>
+              <a
+                href="#"
+                onclick="document.location='Admin_side/Login_admin.html'"
+                >Admin Page</a
+              >
+            </li>
+          </ul>
         </div>
-        <!-- Follow Us Section -->
-        <div class="footer-social">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/" class="social-icon facebook" target="_blank">
-                    <img src="images/facebook.jpg" alt="Facebook" class="social-img">
-                </a>
-                <a href="https://x.com/?lang=en" class="social-icon X" target="_blank">
-                    <img src="images/x.jpg" alt="X" class="social-img">
-                </a>
-                <a href="https://www.instagram.com/" class="social-icon instagram" target="_blank">
-                    <img src="images/instagram.jpg" alt="Instagram" class="social-img">
-                </a>
-            </div>
+        <div class="footer-column">
+          <h3>LEGAL</h3>
+          <ul>
+            <li><a href="termsandconditions.html">Terms & Conditions</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+          </ul>
         </div>
-        <p>&copy; 2024 PrismVerse Cinematics Pte Ltd. All rights reserved.</p>
+        <div class="footer-column">
+          <h3>CUSTOMER SERVICES</h3>
+          <ul>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>ABOUT</h3>
+          <ul>
+            <li><a href="aboutpvc.html">About PVC</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Follow Us Section -->
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a
+            href="https://www.facebook.com/"
+            class="social-icon facebook"
+            target="_blank"
+          >
+            <img src="images/facebook.jpg" alt="Facebook" class="social-img" />
+          </a>
+          <a
+            href="https://x.com/?lang=en"
+            class="social-icon X"
+            target="_blank"
+          >
+            <img src="images/x.jpg" alt="X" class="social-img" />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            class="social-icon instagram"
+            target="_blank"
+          >
+            <img
+              src="images/instagram.jpg"
+              alt="Instagram"
+              class="social-img"
+            />
+          </a>
+        </div>
+      </div>
+      <p>&copy; 2024 PrismVerse Cinematics Pte Ltd. All rights reserved.</p>
     </footer>
-</body>
+  </body>
 </html>
