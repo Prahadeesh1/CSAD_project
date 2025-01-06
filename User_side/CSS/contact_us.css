@@ -71,6 +71,7 @@ footer {
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #f39c12;
+  font-weight: bold;
 }
 .footer-column ul {
   list-style: none;
@@ -98,6 +99,7 @@ footer {
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #f39c12;
+  font-weight: bold;
 }
 .social-icons {
   display: flex;
@@ -215,7 +217,8 @@ form button:hover {
 }
 
 .contact-description {
-  font-size: 16px;
+  font-size: 18.5px;
+  color: white;
 }
 
 @media (max-width: 768px) {
@@ -237,6 +240,7 @@ form button:hover {
 
 .contact-mid-section {
   background-color: #1f1f1f;
+  font-size: 20px;
 }
 
 .contact-mid-section i {
@@ -250,4 +254,41 @@ form button:hover {
   align-items: center;
   flex-wrap: wrap; /* Ensures responsiveness */
   text-align: center;
+}
+
+/* Container for the contact form and map */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Map section styling */
+.contact-map {
+  flex: 1;
+  width: 400;
+  height: auto;
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+/* Form section styling */
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-title {
+  color: #ff4500;
+  text-align: center;
+  margin-top: -70px; /* Adjust this value as needed */
 }
