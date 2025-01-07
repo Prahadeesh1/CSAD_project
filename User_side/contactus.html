@@ -40,11 +40,11 @@
 <section class="contact-mid-section p-4 mt-4">
   <div class="row justify-content-center">
       <div class="col-4 text-center">
-          <p style="color: #00eeff;">PVC Email Support</p>
+          <p style="color: white">PVC Email Support</p>
           <h3 class="contactus"><a href="mailto:cs@pvcinematics.com.sg">cs@pvcinematics.com.sg</a></h3>
       </div>
       <div class="col-4 text-center">
-          <p style="color: #00eeff;">PVC Customer Relations Hotline</p>
+          <p style="color: white;">PVC Customer Relations Hotline</p>
           <h3 class="contactus"><a href="tel:+6562228989">+65 6222 8989</a></h3>
       </div>
   </div>
@@ -54,10 +54,19 @@
    <div class="contact-container justify-content-center">
     <div class="contact-map">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.230902327676!2d126.92572107640434!3d37.52605392644751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b45c3d89d7801%3A0x7883571cabf15b8b!2sThe%20Hyundai%20Seoul!5e0!3m2!1sen!2ssg!4v1735749107832!5m2!1sen!2ssg" width="400px" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"></iframe>
+<h3 style="color: cyan; font-weight: bold;">Operating Hours</h3>
+<p class="operating-hours">Monday to Friday: 10:00 AM - 10:00 PM</p>
+<p class="operating-hours">Saturday & Sunday: 9:00 AM - 11:00 PM</p>
+<p class="operating-hours">Public Holidays: 9:00 AM - 11:00 PM</p>
+<p class="operating-hours">*Operating hours may differ for each outlets. Please refer to our social media for latest updates</p><br>
+<h3 style="color: cyan; font-weight: bold;">HQ Address</h3>
+<p class="operating-hours">108 Yeoui-daero, Yeongdeungpo District, Seoul, South Korea</p>
 </div>
 
 <div class="contact-form">
-  <form>
+  <form id="contactForm">
+
+
     <div class="mb-3">
       <label for="input-name" class="form-label">Name *</label>
         <input type="text" class="form-control" required="" name="name">
@@ -108,7 +117,32 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 
+     <!-- Message Section -->
+     <div id="submissionMessage" class="alert alert-success mt-3" style="display:none;">
+      Form has been submitted!
+    </div>
+
   </form>
+</div>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Clear the form fields
+    this.reset();
+
+    // Show the success message
+    const messageBox = document.getElementById("submissionMessage");
+    messageBox.style.display = "block";
+
+    // Optionally, hide the message after a few seconds
+    setTimeout(() => {
+      messageBox.style.display = "none";
+    }, 5000);
+  });
+</script>
+
 </div>
 </div>
 </div>
