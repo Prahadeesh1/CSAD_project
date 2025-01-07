@@ -292,3 +292,8 @@ form button:hover {
   text-align: center;
   margin-top: -70px; /* Adjust this value as needed */
 }
+
+.operating-hours {
+  color: white;
+  font-size: 18px;
+}
