@@ -19,17 +19,21 @@
 <div class="movie-form">
             <div class="form-group">
         <!-- Dropdown for Theaters -->
-        <label class="dropdown-title">Edit Theaters</label>
+        <label class="dropdown-title">Edit Cinema Theaters</label>
         <div class="dropdown multi-select">
             <div class="select">
-                <span class="selected">Select Theaters</span>
+                <span class="selected">Select Cinema Theaters</span>
                 <div class="caret"></div>
             </div>
             <ul class="menu">
-                <li><input type="checkbox" value="Theater 1"> Theater 1</li>
-                <li><input type="checkbox" value="Theater 2"> Theater 2</li>
-                <li><input type="checkbox" value="Theater 3"> Theater 3</li>
-                <li><input type="checkbox" value="Theater 4"> Theater 4</li>
+                <li><input type="checkbox" value="The Hyundai-Hall A">The Hydundai,Hall A</li>
+                <li><input type="checkbox" value="The Hyundai-Hall B">The Hydundai,Hall B</li>
+                <li><input type="checkbox" value="Lotte World Mall-Hall A">Lotte World Mall,Hall A</li>
+                <li><input type="checkbox" value="Lotte World Mall-Hall B">Lotte World Mall,Hall B</li>
+                <li><input type="checkbox" value="Suntec City-Hall A">Suntec City,Hall A</li>
+                <li><input type="checkbox" value="Suntec City-Hall B">Suntec City,Hall B</li>
+                <li><input type="checkbox" value="Ion Orchard-Hall A">Ion Orchard,Hall A</li>
+                <li><input type="checkbox" value="Ion Orchard-Hall B">Ion Orchard,Hall B</li>
             </ul>
         </div>
 
@@ -85,7 +89,7 @@
 
                     selected.textContent = selectedOptions.length > 0 
                         ? selectedOptions.join(', ') 
-                        : 'Select Theaters';
+                        : 'Select Cinema Theaters';
                 }
             });
         });
