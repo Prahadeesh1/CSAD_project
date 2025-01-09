@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Movies</title>
+    <link rel="stylesheet" href="CSS/Edit_movie.css">
+</head>
+<body>
+<!-- Header Navigation -->
+<div class="navbar">
+    <img src="static_image/logo.png" alt="Logo">
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">Cinemas</a>
+        <a href="#">Experiences</a>
+        <a href="#">Shop</a>
+        <a href="#">Events Booking</a>
+    </nav>
+</div>
+
+<!-- Headline -->
+<h1>Edit Movies</h1>
+
+<!-- Back Button -->
+<button class="back-button" onclick="document.location='Page_admin.html'">Back to Admin</button>
+
+<!-- Movies List -->
+<div class="movie-container">
+    <!-- Movie Row Example -->
+    <div class="movie-row">
+        <div class="movie-details">
+            <img src="dynamic_image/avengersposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Movie Name</h2>
+                <p><strong>Casts:</strong> Movie Casts</p>
+                <p><strong>Director:</strong> Movie Director</p>
+                <p><strong>Genre:</strong> Movie Genre</p>
+                <p><strong>Language:</strong> Movie Language</p>
+            </div>
+        </div>
+        <div class="movie-buttons">
+            <button class="details-btn" onclick="location.href='Edit_details.html'">Details</button>
+            <button class="time-btn" onclick="location.href='Edit_times.html'">Time</button>
+        </div>
+    </div>
+    <!-- Repeat .movie-row for each movie -->
+    <div class="movie-row">
+        <div class="movie-details">
+            <img src="dynamic_image/kravenposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Movie Name</h2>
+                <p><strong>Casts:</strong> Movie Casts</p>
+                <p><strong>Director:</strong> Movie Director</p>
+                <p><strong>Genre:</strong> Movie Genre</p>
+                <p><strong>Language:</strong> Movie Language</p>
+            </div>
+        </div>
+        <div class="movie-buttons">
+            <button class="details-btn" onclick="location.href='Edit_details.html'">Details</button>
+            <button class="time-btn" onclick="location.href='Edit_times.html'">Time</button>
+        </div>
+    </div>
+    <div class="movie-row">
+        <div class="movie-details">
+            <img src="dynamic_image/transformersposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Movie Name</h2>
+                <p><strong>Casts:</strong> Movie Casts</p>
+                <p><strong>Director:</strong> Movie Director</p>
+                <p><strong>Genre:</strong> Movie Genre</p>
+                <p><strong>Language:</strong> Movie Language</p>
+            </div>
+        </div>
+        <div class="movie-buttons">
+            <button class="details-btn" onclick="location.href='Edit_details.html'">Details</button>
+            <button class="time-btn" onclick="location.href='Edit_times.html'">Time</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
