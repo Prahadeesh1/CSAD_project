@@ -1,4 +1,4 @@
-/* General Styling */
+
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@ body {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* Header */
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@ body {
     text-decoration: underline;
 }
 
-/* Add Movies Section */
+
 .add-movies {
     padding: 20px;
 }
@@ -61,7 +61,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Dropdown Select */
+
 .section select {
     width: 100%;
     padding: 10px;
@@ -71,7 +71,7 @@ body {
     color: #fff;
 }
 
-/* Calendar Table */
+
 .calendar p {
     margin-bottom: 5px;
     font-weight: bold;
@@ -92,7 +92,7 @@ body {
     background-color: #222;
 }
 
-/* Showing Times */
+
 .showing-times label {
     display: block;
     margin-bottom: 5px;
@@ -103,7 +103,7 @@ body {
     margin-right: 5px;
 }
 
-/* Input Fields */
+
 .movie-details input,
 .movie-details textarea {
     display: block;
@@ -121,7 +121,6 @@ textarea {
     height: 100px;
 }
 
-/* Add Button */
 .add-button {
     text-align: right;
 }
