@@ -208,3 +208,20 @@ h1 {
 .movie-form .add-button:hover {
     background-color: #bb0101;
 }
+
+/* Date and Time Picker */
+#dateTimePicker {
+    width: 100%;
+    padding: 10px 120px;
+    border-radius: 5px;
+    background-color: #555;
+    color: white;
+    border: 1px solid #444;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+#dateTimePicker::placeholder {
+    color: lightgray;
+}
+
