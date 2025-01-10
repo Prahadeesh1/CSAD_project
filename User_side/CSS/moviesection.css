@@ -1,0 +1,291 @@
+/*General*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+  }
+  
+  body {
+    height: 100vh;
+    background: #000000;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header Section */
+  .navbar {
+    display: flex;
+    align-items: center; /* Align logo and links vertically */
+    justify-content: space-between; /* Spread content across the header */
+    background-color: #8b0000;
+    color: white;
+    padding: 0; /* Remove gaps around the logo */
+    height: 80px; /* Fixed height for consistent layout */
+  }
+  /* Logo Styling */
+  .navbar img {
+    height: 100%; /* Dynamically scale logo to header height */
+    max-height: 100%; /* Prevent overflow */
+    margin: 0; /* Remove any margin around the logo */
+    object-fit: contain; /* Keep logo proportions */
+  }
+  /* Navigation Links */
+  .navbar nav {
+    display: flex;
+    justify-content: space-around; /* Spread links evenly across the available space */
+    flex: 1; /* Allow nav to take up remaining space after logo */
+  }
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem; /* Make links bigger */
+    font-weight: bold; /* Make links bold */
+    text-align: center; /* Center text within the allocated space */
+    padding: 0; /* Remove additional padding */
+    flex: 1; /* Each link takes up equal space */
+  }
+  .navbar a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Slider Container */
+  .slider-wrapper {
+    position: relative;
+    max-width: 50rem; /* Set maximum width for the slider */
+    margin: 0 auto; /* Center the slider */
+    overflow: hidden; /* Hide overflow to avoid scrollbars */
+    aspect-ratio: 2.35 / 1; /* Maintain a 2.35:1 aspect ratio */
+  }
+  /* Slider */
+  .slider {
+    display: flex; /* Align slides horizontally */
+    transition: transform 0.5s ease-in-out; /* Smooth transitions */
+    width: 100%; /* Ensure slider matches container width */
+  }
+  /* Individual Slides */
+  .slider img {
+    flex: 0 0 100%; /* Each slide takes up 100% of the container width */
+    object-fit: cover; /* Ensure images fit without distortion */
+    width: 100%; /* Fill the width of the container */
+    height: 100%; /* Match the height set by aspect-ratio */
+  }
+  /* Slider Navigation */
+  .slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .slider-nav a {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+    cursor: pointer;
+  }
+  .slider-nav a.active {
+    opacity: 1;
+    background-color: #ff0000; /* Highlight active dot */
+  }
+  .slider-nav a:hover {
+    opacity: 1;
+  }
+  
+  /* Second Navigation Bar */
+  .sub-nav {
+    background-color: #8b0000;
+    width: 100%; /* Ensure it takes full width */
+    max-width: 1200px; /* Match the width of the main section */
+    margin: 0 auto; /* Center align the navigation bar */
+    color: white;
+    padding: 0.5rem 0;
+    text-align: center;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  .sub-nav a {
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: background 0.3s;
+  }
+  .sub-nav a:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  /* Main Section */
+  main {
+    padding: 2rem;
+  }
+  .now-showing {
+    max-width: 1200px; /* Match slider width for consistency */
+    margin: 0 auto;
+    text-align: center;
+  }
+  .now-showing h1 {
+    font-size: 2rem;
+    color: #f4f4f4;
+    margin-bottom: 1.5rem;
+  }
+  /* Movie Grid */
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Five cards per row */
+    gap: 1rem;
+  }
+  /* Movie Post */
+  .movie-post {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    background: #000; /* Black background for posters */
+  }
+  .movie-post:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  /* Movie Poster */
+  .movie-post img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+  .movie-post:hover img {
+    opacity: 0.3; /* Dim the poster on hover */
+  }
+  /* Movie Info */
+  .movie-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+  }
+  .movie-post:hover .movie-info {
+    opacity: 1; /* Show details on hover */
+  }
+  .movie-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .movie-info p {
+    margin: 0.2rem 0;
+  }
+  .button {
+    display: inline-block;
+    background: #f39c12;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background: #d35400;
+  }
+  
+  /* Visualbar Section */
+  .visbar {
+    display: flex;
+    align-items: center; /* Align logo and images vertically */
+    justify-content: space-evenly; /* Evenly space the images */
+    padding: 0; /* Remove gaps around the container */
+    height: 80px; /* Fixed height for consistent layout */
+  }
+  /* Logo Styling */
+  .visbar img {
+    height: 100%; /* Scale images to match the header height */
+    width: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Keep image proportions */
+  }
+  
+  /* Footer Section */
+  footer {
+    background: linear-gradient(to bottom, black, rgb(148, 0, 0));
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: auto; /* Push the footer to the bottom */
+  }
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .footer-column {
+    text-align: left;
+    margin: 0.5rem 1rem;
+  }
+  .footer-column h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #f39c12;
+  }
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+  }
+  .footer-column ul li {
+    margin: 0.3rem 0;
+  }
+  .footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  .footer-column ul li a:hover {
+    color: #f39c12;
+  }
+  
+  /* Follow Us Section */
+  .footer-social {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .footer-social h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #f39c12;
+  }
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between icons */
+  }
+  .social-icon {
+    display: inline-block;
+  }
+  .social-img {
+    width: 40px; /* Adjust size of the icons */
+    height: 40px;
+    transition: opacity 0.3s ease;
+  }
+  .social-icon:hover .social-img {
+    opacity: 0.7; /* Change opacity on hover */
+  }
+  /* Footer Text */
+  footer p {
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+  
