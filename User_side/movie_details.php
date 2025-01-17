@@ -10,8 +10,7 @@
     <!-- Header Navigation -->
     <div class="navbar">
       <img src="images/logo.png" alt="Logo" />
-      <nav>
-        <a href="main_page.html" onclick="document.location='main_page.html'">Home</a>
+
         <a href="#">Movies</a>
         <a href="#">Cinemas</a>
         <a href="#">Experiences</a>
@@ -27,13 +26,12 @@
           <img src="images/transformersposter.jpg" alt="Movie Poster" />
         </div>
         <div class="info-container">
-          <h1 class="movie-title">King Praha Story</h1>
+          <h1 class="movie-title">TRANSFORMER: THE LAST KNIGHT</h1>
           <h2>Movie Details</h2>
-          <p><strong>Cast:</strong> Actor 1, Actor 2, Actor 3</p>
-          <p><strong>Director:</strong> Wang Hong Xiang</p>
+          <p><strong>Cast: </strong>Mark Wahlberg, Isabela Merced, Laura Haddock, Anthony Hopkins</p>
+          <p><strong>Director: </strong>Michael Bay</p>
           <p>
-            <strong>Synopsis:</strong> Hi, this is a movie about king Praha who
-            conquer the SEA and become the king of the kings.
+            <strong>Synopsis: </strong>Humans are at war with the Transformers, and Optimus Prime is gone. The key to saving the future lies buried in the secrets of the past and the hidden history of Transformers on Earth. Now, it's up to the unlikely alliance of inventor Cade Yeager, Bumblebee, an English lord and an Oxford professor to save the world.
           </p>
           <div class="extra-details">
             <div><strong>Genre:</strong> Action, Adventure</div>
@@ -46,11 +44,140 @@
       </div>
     </main>
 
-    <!-- Showtimes & Locations Section -->
-     <div class="showtime-location">
-      <h2>Select Cinemas & Time</h2>
+    <!-- Dates Section -->
+    <h3 class="date-title">Select Date</h3>
+    <div class="div-date">
+      <button class="date-button date-option" type="button">
+        <p class="date">FRI</p>
+        <h2>10</h2>
+        <p class="date">JAN</p>
+      </button>
+      <button class="date-button date-option" type="button">
+        <p class="date">SAT</p>
+        <h2>11</h2>
+        <p class="date">JAN</p>
+      </button>
+      <button class="date-button date-option" type="button">
+        <p class="date">SUN</p>
+        <h2>12</h2>
+        <p class="date">JAN</p>
+      </button>
+      <button class="date-button date-option" type="button">
+        <p class="date">MON</p>
+        <h2>13</h2>
+        <p class="date">JAN</p>
+      </button>
+    </div>
 
-     </main>
+    <!-- Experience Section 
+    <h3 class="experience-title">Select Experience</h3>
+    <div class="div-experience">
+      <button class="experience-button" type="button">
+        <h2 style="font-family: sans-serif">Standard</h2>
+      </button>
+      <button class="experience-button" type="button">
+        <h2 style="font-family: fantasy; font-size: 23px">Premiere</h2>
+      </button>
+      <button class="experience-button" type="button">
+        <h2 style="font-family: monospace; font-size: 30px">IMAX</h2>
+      </button>
+      <button class="experience-button" type="button">
+        <h2 style="font-family: fantasy; font-size: 30px">4D</h2>
+      </button>
+      <button class="experience-button" type="button">
+        <h2>LUXE</h2>
+        <h2>SUITE</h2>
+      </button>
+    </div>
+    -->
+
+    <!-- Location & Time Section -->
+    <div class="section-container">
+      <div class="time-header">
+        <h3 class="time-title">Select Cinema & Time</h3>
+        <div class="region-select">
+          <label for="region-dropdown">Region:</label>
+          <select id="region-dropdown">
+            <option value="" selected>All</option>
+            <option value="1">Korea</option>
+            <option value="2">Singapore</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="location-seoul">
+        <h3 class="location-title">Seoul, The Hyundai</h3>
+        <div class="div-time">
+          <button class="time-button time-option">
+            <p>11:00AM</p>
+          </button>
+          <button class="time-button time-option">
+            <p>2:00PM</p>
+          </button>
+          <button class="time-button time-option">
+            <p>6:30PM</p>
+          </button>
+        </div>
+        <hr class="location-divider" />
+
+        <h3 class="location-title">Seoul, Lotte World Mall</h3>
+        <div class="div-time">
+          <button class="time-button">
+            <p>10:30AM</p>
+          </button>
+          <button class="time-button">
+            <p>3:00PM</p>
+          </button>
+          <button class="time-button">
+            <p>7:00PM</p>
+          </button>
+        </div>
+        <hr class="location-divider" id="lotte-world-divider" />
+      </div>
+
+      <div class="location-sg">
+        <h3 class="location-title">Singapore, Suntec City</h3>
+        <div class="div-time">
+          <button class="time-button">
+            <p>10:15AM</p>
+          </button>
+          <button class="time-button">
+            <p>1:30PM</p>
+          </button>
+          <button class="time-button">
+            <p>5:45PM</p>
+          </button>
+        </div>
+        <hr class="location-divider" />
+
+        <h3 class="location-title">Singapore, Ion Orchard</h3>
+        <div class="div-time">
+          <button class="time-button">
+            <p>11:45AM</p>
+          </button>
+          <button class="time-button">
+            <p>4:30PM</p>
+          </button>
+          <button class="time-button">
+            <p>6:15PM</p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Modal -->
+<div id="popup-modal" class="modal">
+  <div class="modal-content">
+    <img id="modal-poster" src="images/transformersposter.jpg">
+    <p><b>TRANSFORMER: THE LAST KNIGHT</b><br></p>
+    <span id="close-modal" class="close">&times;</span>
+    <p id="modal-message"></p><br>
+    <a href="seat.html">
+      <button id="modal-button">Seat Selection</button>
+    </a>
+  </div>
+</div>
+
 
     <!-- Footer Section -->
     <footer>
@@ -123,5 +250,111 @@
       </div>
       <p>&copy; 2024 PrismVerse Cinematics Pte Ltd. All rights reserved.</p>
     </footer>
+
+    <script>
+    function formatDate(date) {
+      const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const monthsOfYear = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+      const selectedDate = new Date(date);
+      const day = daysOfWeek[selectedDate.getDay()];
+      const month = monthsOfYear[selectedDate.getMonth()];
+      const dayOfMonth = selectedDate.getDate();
+      
+      // Add suffix (st, nd, rd, th) based on the day of the month
+      const suffix = dayOfMonth % 10 === 1 && dayOfMonth !== 11 ? "st" :
+                     dayOfMonth % 10 === 2 && dayOfMonth !== 12 ? "nd" :
+                     dayOfMonth % 10 === 3 && dayOfMonth !== 13 ? "rd" : "th";
+      
+      return `${day}, ${dayOfMonth}${suffix} ${month}`;
+    }
+    
+    // State variables for selected date and time
+    let selectedDate = null;
+    let selectedTime = null;
+    
+    // Select all relevant buttons and dropdowns
+    const dateButtons = document.querySelectorAll(".date-button");
+    const timeButtons = document.querySelectorAll(".time-button");
+    const regionDropdown = document.getElementById("region-dropdown");
+    const modal = document.getElementById("popup-modal");
+    const modalMessage = document.getElementById("modal-message");
+    const closeModal = document.getElementById("close-modal");
+    
+    // Date selection functionality
+    dateButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        // Get the full date (day, date, month)
+        const day = button.querySelector("p.date").innerText;  // e.g., "FRI"
+        const dayNumber = button.querySelector("h2").innerText;  // e.g., "10"
+        const month = button.querySelector("p.date:last-of-type").innerText;  // e.g., "JAN"
+        
+        // Use formatDate function to get the complete date
+        selectedDate = formatDate(new Date(`${month} ${dayNumber}, 2025`));
+    
+        dateButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+    
+        console.log(`Selected Date: ${selectedDate}`);
+      });
+    });
+    
+    // Time selection functionality
+    timeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!selectedDate) {
+          alert("Please select a date first.");
+          return;
+        }
+        // Update the selected time and visually highlight it
+        selectedTime = button.querySelector("p").innerText;
+        timeButtons.forEach((btn) => btn.classList.remove("selected"));
+        button.classList.add("selected");
+    
+        // Show modal when both date and time are selected
+        if (selectedDate && selectedTime) {
+          modalMessage.innerText = `You have selected:\nDate: ${selectedDate}\nTime: ${selectedTime}`;
+          modal.style.display = "block";
+        }
+        console.log(`Selected Time: ${selectedTime}`);
+      });
+    });
+    
+
+    regionDropdown.addEventListener("change", () => {
+      const selectedRegion = regionDropdown.value;
+      const sgLocations = document.querySelectorAll(".location-sg");
+      const seoulLocations = document.querySelectorAll(".location-seoul");
+      const lotteDivider = document.getElementById("lotte-world-divider");
+    
+
+      sgLocations.forEach((location) => (location.style.display = "none"));
+      seoulLocations.forEach((location) => (location.style.display = "none"));
+    
+
+      if (selectedRegion === "1") {
+        seoulLocations.forEach((location) => (location.style.display = "block"));
+        lotteDivider.style.display = "none";
+      } else if (selectedRegion === "2") {
+        sgLocations.forEach((location) => (location.style.display = "block"));
+        lotteDivider.style.display = "none";
+      } else {
+        sgLocations.forEach((location) => (location.style.display = "block"));
+        seoulLocations.forEach((location) => (location.style.display = "block"));
+        lotteDivider.style.display = "block";
+      }
+    });
+    
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+    
+    window.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  </script>
+
   </body>
 </html>
