@@ -23,6 +23,7 @@ body {
   padding: 0; /* Remove gaps around the logo */
   height: 80px; /* Fixed height for consistent layout */
 }
+
 /* Logo Styling */
 .navbar img {
   height: 100%; /* Dynamically scale logo to header height */
