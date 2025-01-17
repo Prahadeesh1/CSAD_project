@@ -1,10 +1,20 @@
-/* General */
+/*General*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial;
   background: #000000;
   color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Header Section */
@@ -15,13 +25,15 @@ body {
   background-color: #8b0000;
   color: white;
   padding: 0; /* Remove gaps around the logo */
-  height: 80px; /* Fixed height to match main page */
+  height: 80px; /* Fixed height for consistent layout */
 }
+
+
 /* Logo Styling */
 .navbar img {
   height: 100%; /* Dynamically scale logo to header height */
   max-height: 100%; /* Prevent overflow */
-  margin: 0; /* Remove margin to position the logo flush left */
+  margin: 0; /* Remove any margin around the logo */
   object-fit: contain; /* Keep logo proportions */
 }
 /* Navigation Links */
@@ -66,7 +78,8 @@ body {
 }
 .poster-container img {
   width: 100%;
-  max-width: 300px;
+  height: 100%;
+  max-width: 600px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
@@ -79,7 +92,7 @@ body {
   margin-bottom: 1rem;
 }
 .info-container p {
-  font-size: 1rem;
+  font-size: 18px;
   margin: 0.5rem 0;
   line-height: 1.5;
 }
@@ -162,4 +175,290 @@ footer {
 footer p {
   font-size: 0.8rem;
   color: #aaa;
+}
+
+/* Date Section */
+.div-date {
+  align-items: center;
+  display: flex;
+  margin-left: 50px;
+  justify-content: flex-start;
+}
+
+.date-title,
+.experience-title {
+  padding-bottom: 20px;
+  margin-left: 55px;
+}
+
+.date-button {
+  height: 85px;
+  width: 60px;
+  border-radius: 8px;
+  border: rgb(0, 17, 255) solid;
+  border-width: 3px;
+  margin: -5px 5px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  cursor: pointer;
+  background-color: #aaa;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.date-button p {
+  margin: -2px;
+  font-size: 14px;
+}
+
+.date-button.selected {
+  background-color: #11ab35;
+  color: white;
+}
+
+/* Experience Section */
+.div-experience {
+  align-items: center;
+  display: flex;
+  margin-left: 55px;
+}
+
+.experience-button {
+  height: 60px;
+  width: 100px;
+  border-radius: 5px;
+  border: rgb(0, 17, 255) solid;
+  border-width: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #aaa;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+  padding: 5px;
+}
+
+.experience-button h2 {
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.experience-button.selected {
+  background-color: #11ab35;
+  color: white;
+}
+
+.section-container {
+  border: 2px solid #4b4b4b;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 20px 10px;
+}
+
+/* Location & Time Section */
+.div-location {
+  align-items: center;
+  display: flex;
+  margin-left: 10px;
+}
+
+.div-time {
+  align-items: center;
+  display: flex;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+
+.time-button {
+  height: 50px;
+  width: 80px;
+  border-radius: 10px;
+  border: rgb(0, 17, 255) solid;
+  border-width: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #aaa;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+  padding: 5px;
+}
+
+.time-button p {
+  font-size: 15px;
+  font-family: monospace;
+  text-align: center;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.time-button.selected {
+  background-color: #11ab35;
+  color: white;
+}
+
+.time-title {
+  padding-bottom: -50px;
+  margin-left: 0px;
+  padding-top: 5px;
+  margin-bottom: 20px;
+}
+
+.time-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 40px;
+}
+
+.region select {
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #4b4b4b;
+  background-color: #222;
+  color: #fff;
+}
+
+#region-dropdown {
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #4b4b4b;
+  background-color: #222;
+  color: #fff;
+}
+
+.location-title {
+  font-size: 18px;
+  padding-left: 40px;
+  color: #f39c12;
+  margin-bottom: 10px;
+}
+
+.location-divider {
+  border: 0;
+  height: 1px;
+  background-color: #4b4b4b;
+  margin: 20px 0;
+}
+
+/* Modal Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* This will center the modal */
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+}
+
+/* Modal Styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); /* This will center the modal */
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.8); /* Black with opacity */
+}
+
+/* Modal Content Styling */
+.modal-content {
+  background-color: #222;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center; /* Center the content */
+  color: white;
+  border-radius: 10px;
+  position: relative; /* Needed for absolute positioning of close button */
+  line-height: 1.5;
+  
+  /* LED glowing effect on the outline */
+  border: 5px solid transparent; /* Transparent border */
+  background-color: #222; /* Modal content background */
+  box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000; /* Default glow */
+  animation: ledGlow 4s linear infinite; /* Apply LED glow animation with flowing effect */
+}
+
+/* LED glowing effect animation with flowing effect */
+@keyframes ledGlow {
+  0% {
+    border-color: #ff0000; /* Red */
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+  }
+  20% {
+    border-color: #00ff00; /* Green */
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+  }
+  40% {
+    border-color: #0000ff; /* Blue */
+    box-shadow: 0 0 10px #0000ff, 0 0 20px #0000ff, 0 0 30px #0000ff;
+  }
+  60% {
+    border-color: #ffff00; /* Yellow */
+    box-shadow: 0 0 10px #ffff00, 0 0 20px #ffff00, 0 0 30px #ffff00;
+  }
+  80% {
+    border-color: #ff00ff; /* Magenta */
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+  100% {
+    border-color: #ff0000; /* Back to Red */
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+  }
+}
+
+#modal-poster {
+  width: 300px;
+  height: 500px;
+  height: auto;
+}
+
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+}
+
+#modal-button {
+  border-radius: 3px;
+  text-align: center;
+  justify-content: center;
+  width: fit-content;
+  height: 35px;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 3px 3px 3px 3px;
 }
