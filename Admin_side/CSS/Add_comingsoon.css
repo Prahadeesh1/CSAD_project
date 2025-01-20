@@ -1,0 +1,118 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(to bottom, black, rgb(116, 102, 102));
+    color: white;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Back to Sections Button */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-button:hover {
+    background-color: #ff9999;
+}
+
+/* Headline Title */
+h1 {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* Form Container Layout */
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Cover Container */
+.cover-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.cover-container .add-cover {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1.2rem;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.cover-container img#cover-preview {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Movie poster ratio */
+    border-radius: 5px;
+    display: none;
+}
+
+/* Movie Form */
+.movie-form {
+    flex: 1;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+}
+
+.movie-form .form-group {
+    margin-bottom: 15px;
+}
+.movie-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #555;
+    color: white;
+    border: 1px solid #444;
+    resize: none;
+}
+
+.movie-form .add-button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+    margin-top: 10px;
+}
+.movie-form .add-button:hover {
+    background-color: #ff9999;
+}

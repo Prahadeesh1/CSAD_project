@@ -7,64 +7,116 @@
     <link rel="stylesheet" href="CSS/Delete_movie.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">PRISMVERSE CINEMATICS</div>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">Movies</a>
-                <a href="#">Cinemas</a>
-                <a href="#">Experiences</a>
-                <a href="#">Shop</a>
-                <a href="#">Events Booking</a>
-            </nav>
-        </header>
-        <main>
-            <button class="back-button" onclick="document.location='Page_Admin.html'">Back to Admin</button>
-            <h1>Delete Movies</h1>
-            <div class="movie-list">
-                <div class="movie">
-                    <input type="radio" name="movie" id="movie1">
-                    <label for="movie1">
-                        <img src="avengers.jpg" alt="Avengers: End Game">
-                        <div class="details">
-                            <h2>Avengers: End Game</h2>
-                            <p>Cast: abcdef</p>
-                            <p>Director: ab</p>
-                            <p>Genre: abc</p>
-                            <p>Language: abc</p>
-                        </div>
-                    </label>
-                </div>
-                <div class="movie">
-                    <input type="radio" name="movie" id="movie2">
-                    <label for="movie2">
-                        <img src="spiderman.jpg" alt="Spiderman: Madness">
-                        <div class="details">
-                            <h2>Spiderman: Madness</h2>
-                            <p>Cast: abcdef</p>
-                            <p>Director: ab</p>
-                            <p>Genre: abc</p>
-                            <p>Language: abc</p>
-                        </div>
-                    </label>
-                </div>
-                <div class="movie">
-                    <input type="radio" name="movie" id="movie3">
-                    <label for="movie3">
-                        <img src="fastx.jpg" alt="Fast X">
-                        <div class="details">
-                            <h2>Fast X</h2>
-                            <p>Cast: abcdef</p>
-                            <p>Director: ab</p>
-                            <p>Genre: abc</p>
-                            <p>Language: abc</p>
-                        </div>
-                    </label>
-                </div>
-            </div>
-            <button class="delete-button">Delete</button>
-        </main>
+    <!-- Header Navigation -->
+    <div class="navbar">
+        <img src="static_image/logo.png" alt="Logo">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Cinemas</a>
+            <a href="#">Experiences</a>
+            <a href="#">Shop</a>
+            <a href="#">Events Booking</a>
+        </nav>
     </div>
+
+    <!-- Headline -->
+    <h1>Delete Movies</h1>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="document.location='Page_admin.html'">Back to Admin</button>
+
+    <!-- Movies List -->
+    <div class="movie-container">
+    <div class="movie-row">
+        <input type="checkbox" class="movie-select">
+        <div class="movie-details">
+            <img src="dynamic_image/avengersposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Avengers</h2>
+                <p><strong>Casts:</strong> Robert Downey Jr., Chris Evans</p>
+                <p><strong>Director:</strong> Joss Whedon</p>
+                <p><strong>Genre:</strong> Action, Sci-Fi</p>
+                <p><strong>Language:</strong> English</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="movie-container">
+    <div class="movie-row">
+        <input type="checkbox" class="movie-select">
+        <div class="movie-details">
+            <img src="dynamic_image/kravenposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Kraven</h2>
+                <p><strong>Casts:</strong> Aaron Taylor-Johnson</p>
+                <p><strong>Director:</strong> J.C. Chandor</p>
+                <p><strong>Genre:</strong> Action, Thriller</p>
+                <p><strong>Language:</strong> English</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="movie-container">
+    <div class="movie-row">
+        <input type="checkbox" class="movie-select">
+        <div class="movie-details">
+            <img src="dynamic_image/transformersposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Transformers</h2>
+                <p><strong>Casts:</strong> Movie Casts</p>
+                <p><strong>Director:</strong> Movie Director</p>
+                <p><strong>Genre:</strong> Movie Genre</p>
+                <p><strong>Language:</strong> Movie Language</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="movie-container">
+    <div class="movie-row">
+        <input type="checkbox" class="movie-select">
+        <div class="movie-details">
+            <img src="dynamic_image/kravenposter.jpg" alt="Movie Poster" class="movie-poster">
+            <div class="movie-info">
+                <h2>Kraven</h2>
+                <p><strong>Casts:</strong> Aaron Taylor-Johnson</p>
+                <p><strong>Director:</strong> J.C. Chandor</p>
+                <p><strong>Genre:</strong> Action, Thriller</p>
+                <p><strong>Language:</strong> English</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Delete Button -->
+    <button class="delete-button" onclick="showPopup()">Delete</button>
+
+    <!-- Popup Modal -->
+    <div id="popup" class="popup-modal">
+        <div class="popup-content">
+            <h2>WARNING</h2>
+            <p>Selected movies will be permanently removed!</p>
+            <div class="popup-actions">
+                <button class="popup-back" onclick="closePopup()">Back</button>
+                <button class="popup-delete" onclick="deleteMovies()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!--pop up delete js-->
+    <script>
+        function showPopup() {
+            document.getElementById("popup").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function deleteMovies() {
+            // Logic to delete selected movies
+            alert("Movies deleted successfully!");
+            closePopup();
+        }
+    </script>
 </body>
 </html>
