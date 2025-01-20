@@ -12,7 +12,7 @@
       <img src="images/logo.png" alt="Logo" />
 
         <a href="#">Movies</a>
-        <a href="#">Cinemas</a>
+        <a href="../User_side/cinemas.html">Cinemas</a>
         <a href="#">Experiences</a>
         <a href="#">Shop</a>
         <a href="#">Events Booking</a>
@@ -172,7 +172,7 @@
     <p><b>TRANSFORMER: THE LAST KNIGHT</b><br></p>
     <span id="close-modal" class="close">&times;</span>
     <p id="modal-message"></p><br>
-    <a href="seat.html">
+    <a href="seat_selection.php">
       <button id="modal-button">Seat Selection</button>
     </a>
   </div>
