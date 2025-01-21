@@ -9,7 +9,8 @@
   <body>
     <!-- Header Navigation -->
     <div class="navbar">
-        <img src="images/logo.png" alt="Logo" />
+      <a href="../User_side/main_page.php"><img src="images/logo.png" alt="Logo" /></a>
+       
       
       <nav>
         <a href="#">Movies</a>
