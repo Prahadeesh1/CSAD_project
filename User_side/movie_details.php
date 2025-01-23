@@ -10,7 +10,7 @@
     <!-- Header Navigation -->
     <div class="navbar">
       <img src="images/logo.png" alt="Logo" />
-
+      <nav>
         <a href="#">Movies</a>
         <a href="../User_side/cinemas.html">Cinemas</a>
         <a href="#">Experiences</a>
@@ -99,57 +99,63 @@
           <label for="region-dropdown">Region:</label>
           <select id="region-dropdown">
             <option value="" selected>All</option>
-            <option value="1">Korea</option>
-            <option value="2">Singapore</option>
+            <option value="1">North</option>
+            <option value="2">West</option>
+            <option value="3">East</option>
+            <option value="4">Central</option>
           </select>
         </div>
       </div>
 
-      <div class="location-seoul">
-        <h3 class="location-title" data-location-id="hyundai">Seoul, The Hyundai</h3>
+      <div class="location-north">
+        <h3 class="location-title" data-location-id="causeway">Singapore, Causeway Point</h3>
         <div class="div-time">
-          <button class="time-button time-option" data-location="Seoul, The Hyundai">
+          <button class="time-button time-option" data-location="Singapore, Causeway Point">
             <p>11:00AM</p>
           </button>
-          <button class="time-button time-option" data-location="Seoul, The Hyundai">
+          <button class="time-button time-option" data-location="Singapore, Causeway Point">
             <p>2:00PM</p>
           </button>
-          <button class="time-button time-option" data-location="Seoul, The Hyundai">
+          <button class="time-button time-option" data-location="Singapore, Causeway Point">
             <p>6:30PM</p>
           </button>
         </div>
         <hr class="location-divider" />
+      </div>
 
-        <h3 class="location-title" data-location-id="lotte">Seoul, Lotte World Mall</h3>
+      <div class="location-west">
+        <h3 class="location-title" data-location-id="jem">Singapore, JEM</h3>
         <div class="div-time">
-          <button class="time-button" data-location="Seoul, Lotte World Mall">
+          <button class="time-button" data-location="Singapore, JEM">
             <p>10:30AM</p>
           </button>
-          <button class="time-button" data-location="Seoul, Lotte World Mall">
+          <button class="time-button" data-location="Singapore, JEM">
             <p>3:00PM</p>
           </button>
-          <button class="time-button" data-location="Seoul, Lotte World Mall">
+          <button class="time-button" data-location="Singapore, JEM">
             <p>7:00PM</p>
           </button>
         </div>
         <hr class="location-divider" id="lotte-world-divider" />
       </div>
 
-      <div class="location-sg">
-        <h3 class="location-title" data-location-id="suntec">Singapore, Suntec City</h3>
+      <div class="location-east">
+        <h3 class="location-title" data-location-id="suntec">Singapore, Tampines 1</h3>
         <div class="div-time">
-          <button class="time-button" data-location="Singapore, Suntec City">
+          <button class="time-button" data-location="Singapore, Tampines 1">
             <p>10:15AM</p>
           </button>
-          <button class="time-button" data-location="Singapore, Suntec City">
+          <button class="time-button" data-location="Singapore, Tampines 1">
             <p>1:30PM</p>
           </button>
-          <button class="time-button" data-location="Singapore, Suntec City">
+          <button class="time-button" data-location="Singapore, Tampines 1">
             <p>5:45PM</p>
           </button>
         </div>
         <hr class="location-divider" />
+        </div>
 
+      <div class="location-central">
         <h3 class="location-title" data-location-id="orchard">Singapore, Ion Orchard</h3>
         <div class="div-time">
           <button class="time-button" data-location="Singapore, Ion Orchard">
@@ -164,6 +170,8 @@
         </div>
       </div>
     </div>
+
+
 
     <!-- Popup Modal -->
 <div id="popup-modal" class="modal">
@@ -356,23 +364,34 @@ locationTitles.forEach((locationTitle) => {
 
 regionDropdown.addEventListener("change", () => {
   const selectedRegion = regionDropdown.value;
-  const sgLocations = document.querySelectorAll(".location-sg");
-  const seoulLocations = document.querySelectorAll(".location-seoul");
-  const lotteDivider = document.getElementById("lotte-world-divider");
+  const northLocations = document.querySelectorAll(".location-north");
+  const westLocations = document.querySelectorAll(".location-west");
+  const eastLocations = document.querySelectorAll(".location-east");
+  const centralLocations = document.querySelectorAll(".location-central");
+  const outletDivider = document.getElementById("outlet-divider");
 
   sgLocations.forEach((location) => (location.style.display = "none"));
   seoulLocations.forEach((location) => (location.style.display = "none"));
 
   if (selectedRegion === "1") {
-    seoulLocations.forEach((location) => (location.style.display = "block"));
-    lotteDivider.style.display = "none";
+    northLocations.forEach((location) => (location.style.display = "block"));
+    outletDivider.style.display = "none";
   } else if (selectedRegion === "2") {
-    sgLocations.forEach((location) => (location.style.display = "block"));
-    lotteDivider.style.display = "none";
-  } else {
-    sgLocations.forEach((location) => (location.style.display = "block"));
-    seoulLocations.forEach((location) => (location.style.display = "block"));
-    lotteDivider.style.display = "block";
+    westLocations.forEach((location) => (location.style.display = "block"));
+    outletDivider.style.display = "none";
+  } else if (selectedRegion === "3") {
+    eastLocations.forEach((location) => (location.style.display = "block"));
+    outletDivider.style.display = "none";
+  } else if (selectedRegion == "4") {
+    centralLocations.forEach((location) => (location.style.display = "block"));
+    outletDivider.style.display = "none";
+  }
+    else {
+    northLocations.forEach((location) => (location.style.display = "block"));
+    westLocations.forEach((location) => (location.style.display = "block"));
+    eastLocations.forEach((location) => (location.style.display = "block"));
+    centralLocations.forEach((location) => (location.style.display = "block"));
+    outletDivider.style.display = "block";
   }
 });
 

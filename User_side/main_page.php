@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="CSS/mainpage.css" />
   </head>
   <body>
+  <audio id="background-music" src="../User_side/audio/Website Background Music.mp3" autoplay loop>
+  Your browser does not support the audio element.
+</audio>
+
     <!-- Header Navigation -->
     <div class="navbar">
-      <a href="../User_side/main_page.php"><img src="images/logo.png" alt="Logo" /></a>
+      <img src="images/logo.png" alt="Logo" />
        
       
       <nav>
@@ -220,5 +224,33 @@
       </div>
       <p>&copy; 2024 PrismVerse Cinematics Pte Ltd. All rights reserved.</p>
     </footer>
+    <script>
+  const audio = document.getElementById('background-music');
+
+  // Unmute after a short delay to satisfy autoplay policies
+  audio.addEventListener('canplay', () => {
+    setTimeout(() => {
+      audio.muted = false; // Unmute audio
+      audio.play();        // Ensure playback continues
+    }, 1000); // Adjust delay as needed
+  });
+
+// Try playing the audio
+audio.addEventListener('canplay', () => {
+  // Check browser autoplay restrictions
+  const playPromise = audio.play();
+  if (playPromise !== undefined) {
+    playPromise.catch((error) => {
+      console.log('Autoplay blocked, enabling audio after user interaction:', error);
+      // Add an event listener to start audio on user interaction
+      document.addEventListener('click', () => {
+        audio.play();
+      }, { once: true });
+    });
+  }
+});
+
+audio.volume = 0.1;
+</script>
   </body>
 </html>

@@ -289,3 +289,7 @@ footer p {
   font-size: 0.8rem;
   color: #aaa;
 }
+
+#audio {
+  display: none;
+}
