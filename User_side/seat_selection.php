@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Page</title>
-
-    <link rel="stylesheet" href="CSS/seat_selection.css" />
+    <link rel="stylesheet" href="../User_side/CSS/seat_selection.css" />
   </head>
   <body>
     <!-- Header Navigation -->
@@ -58,16 +57,13 @@
         <div class="seat-name">K</div>
         <div class="seat-name">L</div>
         <div class="seat-name">M</div>
-        <div class="seat-name">N</div>
-        <div class="seat-name">O</div>
-        <div class="seat-name">P</div>
       </div>
 
       <div class="row">
         <div class="column-names">
           <div class="column-name">1</div>
         </div>
-          <div class="seat occupied" id="A1"></div>
+          <div class="seat" id="A1"></div>
           <div class="seat" id="B1"></div>
           <div class="seat" id="C1"></div>
           <div class="seat" id="D1"></div>
@@ -80,9 +76,6 @@
           <div class="seat" id="K1"></div>
           <div class="seat" id="L1"></div>
           <div class="seat" id="M1"></div>
-          <div class="seat" id="N1"></div>
-          <div class="seat" id="O1"></div>
-          <div class="seat" id="P1"></div>
           <div class="column-names">
             <div class="column-name">1</div>
           </div>
@@ -92,7 +85,7 @@
         <div class="column-names">
           <div class="column-name">2</div>
         </div>
-        <div class="seat occupied" id="A2"></div>
+        <div class="seat" id="A2"></div>
         <div class="seat" id="B2"></div>
         <div class="seat" id="C2"></div>
         <div class="seat" id="D2"></div>
@@ -105,9 +98,6 @@
         <div class="seat" id="K2"></div>
         <div class="seat" id="L2"></div>
         <div class="seat" id="M2"></div>
-        <div class="seat" id="N2"></div>
-        <div class="seat" id="O2"></div>
-        <div class="seat" id="P2"></div>
         <div class="column-names">
           <div class="column-name">2</div>
         </div>
@@ -117,7 +107,7 @@
       <div class="column-names">
         <div class="column-name">3</div>
       </div>
-      <div class="seat occupied" id="A3"></div>
+      <div class="seat" id="A3"></div>
       <div class="seat" id="B3"></div>
       <div class="seat" id="C3"></div>
       <div class="seat" id="D3"></div>
@@ -130,9 +120,6 @@
       <div class="seat" id="K3"></div>
       <div class="seat" id="L3"></div>
       <div class="seat" id="M3"></div>
-      <div class="seat" id="N3"></div>
-      <div class="seat" id="O3"></div>
-      <div class="seat" id="P3"></div>
       <div class="column-names">
         <div class="column-name">3</div>
       </div>
@@ -146,7 +133,7 @@
           <div class="seat" id="B4"></div>
           <div class="seat" id="C4"></div>
           <div class="seat" id="D4"></div>
-          <div class="seat occupied" id="E4"></div>
+          <div class="seat" id="E4"></div>
           <div class="seat" id="F4"></div>
           <div class="seat" id="G4"></div>
           <div class="seat" id="H4"></div>
@@ -155,9 +142,6 @@
           <div class="seat" id="K4"></div>
           <div class="seat" id="L4"></div>
           <div class="seat" id="M4"></div>
-          <div class="seat" id="N4"></div>
-          <div class="seat" id="O4"></div>
-          <div class="seat" id="P4"></div>
           <div class="column-names">
             <div class="column-name">4</div>
           </div>
@@ -170,7 +154,7 @@
           <div class="seat" id="A5"></div>
           <div class="seat" id="B5"></div>
           <div class="seat" id="C5"></div>
-          <div class="seat occupied" id="D5"></div>
+          <div class="seat" id="D5"></div>
           <div class="seat" id="E5"></div>
           <div class="seat" id="F5"></div>
           <div class="seat" id="G5"></div>
@@ -180,9 +164,6 @@
           <div class="seat" id="K5"></div>
           <div class="seat" id="L5"></div>
           <div class="seat" id="M5"></div>
-          <div class="seat" id="N5"></div>
-          <div class="seat" id="O5"></div>
-          <div class="seat" id="P5"></div>
           <div class="column-names">
             <div class="column-name">5</div>
           </div>
@@ -198,16 +179,13 @@
           <div class="seat" id="D6"></div>
           <div class="seat" id="E6"></div>
           <div class="seat" id="F6"></div>
-          <div class="seat occupied" id="G6"></div>
+          <div class="seat" id="G6"></div>
           <div class="seat" id="H6"></div>
           <div class="seat" id="I6"></div>
           <div class="seat" id="J6"></div>
           <div class="seat" id="K6"></div>
           <div class="seat" id="L6"></div>
           <div class="seat" id="M6"></div>
-          <div class="seat" id="N6"></div>
-          <div class="seat" id="O6"></div>
-          <div class="seat" id="P6"></div>
           <div class="column-names">
             <div class="column-name">6</div>
           </div>
@@ -217,10 +195,10 @@
         <div class="column-names">
           <div class="column-name">7</div>
         </div>
-          <div class="seat occupied" id="A7"></div>
+          <div class="seat" id="A7"></div>
           <div class="seat" id="B7"></div>
           <div class="seat" id="C7"></div>
-          <div class="seat occupied" id="D7"></div>
+          <div class="seat" id="D7"></div>
           <div class="seat" id="E7"></div>
           <div class="seat" id="F7"></div>
           <div class="seat" id="G7"></div>
@@ -230,9 +208,6 @@
           <div class="seat" id="K6"></div>
           <div class="seat" id="L7"></div>
           <div class="seat" id="M7"></div>
-          <div class="seat" id="N7"></div>
-          <div class="seat" id="O7"></div>
-          <div class="seat" id="P7"></div>
           <div class="column-names">
             <div class="column-name">7</div>
           </div>
@@ -245,30 +220,25 @@
           <div class="seat" id="A8"></div>
           <div class="seat" id="B8"></div>
           <div class="seat" id="C8"></div>
-          <div class="seat occupied" id="D8"></div>
-          <div class="seat occupied" id="E8"></div>
+          <div class="seat" id="D8"></div>
+          <div class="seat" id="E8"></div>
           <div class="seat" id="F8"></div>
-          <div class="seat occupied" id="G8"></div>
+          <div class="seat" id="G8"></div>
           <div class="seat" id="H8"></div>
           <div class="seat" id="I8"></div>
           <div class="seat" id="J8"></div>
           <div class="seat" id="K8"></div>
           <div class="seat" id="L8"></div>
           <div class="seat" id="M8"></div>
-          <div class="seat" id="N8"></div>
-          <div class="seat" id="O8"></div>
-          <div class="seat" id="P8"></div>
           <div class="column-names">
             <div class="column-name">8</div>
           </div>
       </div>
 
-
-
   <p class="text">
       You have selected <span id="count">0</span> seats for a price of $<span id="total">0</span>
   </p>
-  <a href="payment.php"><button id="button-payment">Make Payment</button></a>
+  <a href="customer_details.php"><button id="button-particulars">Enter Particulars</button></a>
 
 
 </div>
