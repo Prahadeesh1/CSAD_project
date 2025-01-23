@@ -3,79 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies</title>
-    <link rel="stylesheet" href="CSS/user_movies.css">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="CSS/mainpage.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-        }
-        .navbar nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        .navbar nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        .search-bar {
-            margin-bottom: 20px;
-        }
-        .search-bar input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .movie-grid {
+        /* Custom styles for movie grid layout */
+        .movies-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .movie-card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            background: #222;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-        }
-        .movie-card:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff;
         }
         .movie-card img {
             width: 100%;
-            height: 300px;
-            object-fit: cover;
+            height: auto; /* Automatically maintain aspect ratio */
+            aspect-ratio: 2/3; /* Set aspect ratio for consistent sizing */
+            object-fit: cover; /* Ensures image fills the area */
         }
-        .movie-info {
-            padding: 15px;
+
+        .movie-card h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #f39c12;
         }
-        .movie-title {
-            font-size: 20px;
-            margin: 0 0 10px;
+        .movie-card p {
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #ccc;
         }
-        .movie-details {
-            color: #555;
-            font-size: 14px;
+        .buy-ticket {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 10px 20px;
+            background-color: #8b0000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
         }
-        .movie-details span {
-            display: block;
-            margin: 5px 0;
+        .buy-ticket:hover {
+            background-color: #f39c12;
         }
     </style>
 </head>
@@ -83,10 +59,10 @@
 
 <!-- Header Navigation -->
 <div class="navbar">
-    <img src="images/logo.png" alt="Logo" height="40">
+    <img src="images/logo.png" alt="Logo" />
     <nav>
-        <a href="main_page.html">Home</a>
-        <a href="#">Movies</a>
+        <a href="main_page.php">Home</a>
+        <a href="moviesection.php">Movies</a>
         <a href="#">Cinemas</a>
         <a href="#">Experiences</a>
         <a href="#">Shop</a>
@@ -94,64 +70,37 @@
     </nav>
 </div>
 
-<!-- Movies Section -->
-<div class="container">
-    <div class="search-bar">
-        <input type="text" id="searchBar" placeholder="Search movies...">
-    </div>
-    <div class="movie-grid" id="movieGrid">
-        <!-- Movies will be loaded dynamically here -->
-    </div>
-</div>
+<main>
+      <section class="now-showing">
+        <h1>Now Showing</h1>
+        <div class="movie-grid">
+          <?php
+          // Fetch movies from the API
+          $movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
 
-<script>
-    // Fetch movies from the API and display them
-    async function fetchMovies() {
-        try {
-            const response = await fetch('movie_api.php'); // Replace with your API endpoint
-            const movies = await response.json();
-
-            const movieGrid = document.getElementById('movieGrid');
-            movieGrid.innerHTML = '';
-
-            movies.forEach(movie => {
-                const movieCard = document.createElement('div');
-                movieCard.classList.add('movie-card');
-
-                movieCard.innerHTML = `
-                    <img src="${movie.cover}" alt="${movie.title}">
-                    <div class="movie-info">
-                        <h3 class="movie-title">${movie.title}</h3>
-                        <div class="movie-details">
-                            <span><strong>Genre:</strong> ${movie.genre}</span>
-                            <span><strong>Rating:</strong> ${movie.rating}</span>
-                            <span><strong>Language:</strong> ${movie.language}</span>
-                            <span><strong>Schedule:</strong> ${movie.schedule}</span>
-                        </div>
-                    </div>
-                `;
-
-                movieGrid.appendChild(movieCard);
-            });
-        } catch (error) {
-            console.error('Error fetching movies:', error);
-        }
-    }
-
-    // Search functionality
-    document.getElementById('searchBar').addEventListener('input', function () {
-        const searchTerm = this.value.toLowerCase();
-        const movieCards = document.querySelectorAll('.movie-card');
-
-        movieCards.forEach(card => {
-            const title = card.querySelector('.movie-title').textContent.toLowerCase();
-            card.style.display = title.includes(searchTerm) ? '' : 'none';
-        });
-    });
-
-    // Load movies on page load
-    window.onload = fetchMovies;
-</script>
+          if ($movies['success']) {
+              foreach ($movies['movies'] as $movie) {
+                  echo "<div class='movie-post'>";
+                  echo "<img src='" . htmlspecialchars($movie['cover']) . "' alt='" . htmlspecialchars($movie['title']) . " Poster' />";
+                  echo "<div class='movie-info'>";
+                  echo "<h2>" . htmlspecialchars($movie['title']) . "</h2>";
+                  echo "<p>Rating: " . htmlspecialchars($movie['rating']) . "</p>";
+                  echo "<p>Runtime: " . htmlspecialchars($movie['runtime']) . " mins</p>";
+                  echo "<p>Genre: " . htmlspecialchars($movie['genre']) . "</p>";
+                  echo "<a href='test.php?id=" . urlencode($movie['id']) . "' class='button'>Book Now</a>";
+                  echo "</div>";
+                  echo "</div>";
+              }
+          } else {
+              echo "<p>No movies available</p>";
+          }
+          ?>
+        </div>
+      </section>
+    </main>
+<footer>
+    <p>© 2025 Movie World. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>

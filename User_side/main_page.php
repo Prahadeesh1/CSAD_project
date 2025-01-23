@@ -9,10 +9,9 @@
   <body>
     <!-- Header Navigation -->
     <div class="navbar">
-        <img src="images/logo.png" alt="Logo" />
-      
+      <img src="images/logo.png" alt="Logo" />
       <nav>
-        <a href="#">Movies</a>
+        <a href="moviesection.php">Movies</a>
         <a href="cinemas.html">Cinemas</a>
         <a href="#">Experiences</a>
         <a href="#">Shop</a>
@@ -35,7 +34,6 @@
         </div>
       </div>
     </section>
-    <!--Scrolling Navigation JS-->
     <script>
       const slider = document.querySelector("#slider");
       const slides = document.querySelectorAll(".slider img");
@@ -66,6 +64,7 @@
       }, 4000); // Adjust the interval as needed
       // Initial Setup
       updateSlider();
+  
     </script>
 
     <!-- Second Navigation Bar -->
@@ -80,64 +79,30 @@
       <section class="now-showing">
         <h1>Now Showing</h1>
         <div class="movie-grid">
-          <!-- Movie Poster 1 -->
-          <div class="movie-post">
-            <img src="images/kravenposter.jpg" alt="Kraven Poster" />
-            <div class="movie-info">
-              <h2>Kraven</h2>
-              <p>Rating: R</p>
-              <p>Runtime: 102 mins</p>
-              <p>Genre: Action</p>
-              <a href="#" class="button">Book Now</a>
-            </div>
-          </div>
-          <!-- Movie Poster 2 -->
-          <div class="movie-post">
-            <img src="images/avengersposter.jpg" alt="Avengers Poster" />
-            <div class="movie-info">
-              <h2>Avengers</h2>
-              <p>Rating: PG-13</p>
-              <p>Runtime: 181 mins</p>
-              <p>Genre: Action, Adventure</p>
-              <a href="#" class="button">Book Now</a>
-            </div>
-          </div>
-          <!-- Movie Poster 3 -->
-          <div class="movie-post">
-            <img src="images/fastxposter.jpg" alt="Fast X Poster" />
-            <div class="movie-info">
-              <h2>Fast X</h2>
-              <p>Rating: PG-13</p>
-              <p>Runtime: 141 mins</p>
-              <p>Genre: Action, Thriller</p>
-              <a href="#" class="button">Book Now</a>
-            </div>
-          </div>
-          <!-- Movie Poster 4 -->
-          <div class="movie-post">
-            <img src="images/spidermanposter.jpg" alt="Spiderman Poster" />
-            <div class="movie-info">
-              <h2>Spiderman</h2>
-              <p>Rating: PG</p>
-              <p>Runtime: 120 mins</p>
-              <p>Genre: Action, Sci-Fi</p>
-              <a href="#" class="button">Book Now</a>
-            </div>
-          </div>
-          <!-- Movie Poster 5 -->
-          <div class="movie-post">
-            <img
-              src="images/transformersposter.jpg"
-              alt="Transformers Poster"
-            />
-            <div class="movie-info">
-              <h2>Transformers</h2>
-              <p>Rating: PG</p>
-              <p>Runtime: 124 mins</p>
-              <p>Genre: Sci-Fi, Adventure</p>
-              <a href="movie_details.php" class="button">Book Now</a>
-            </div>
-          </div>
+        <?php
+
+        $movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
+
+        if ($movies['success']) {
+            $latestMovies = array_slice($movies['movies'], 0, 5);
+    
+            foreach ($latestMovies as $movie) {
+                echo "<div class='movie-post'>";
+                echo "<img src='" . htmlspecialchars($movie['cover']) . "' alt='" . htmlspecialchars($movie['title']) . " Poster' />";
+                echo "<div class='movie-info'>";
+                echo "<h2>" . htmlspecialchars($movie['title']) . "</h2>";
+                echo "<p>Rating: " . htmlspecialchars($movie['rating']) . "</p>";
+                echo "<p>Runtime: " . htmlspecialchars($movie['runtime']) . " mins</p>";
+                echo "<p>Genre: " . htmlspecialchars($movie['genre']) . "</p>";
+                echo "<a href='test.php?id=" . urlencode($movie['id']) . "' class='button'>Book Now</a>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No movies available</p>";
+        }
+        ?>
+
         </div>
       </section>
     </main>
@@ -152,6 +117,7 @@
       <img src="images/d-box.jpg" alt="Logo" />
     </div>
 
+
     <!-- Footer Section -->
     <footer>
       <div class="footer-links">
@@ -160,7 +126,7 @@
           <ul>
             <li><a href="#">Log In/Register</a></li>
             <li>
-              <a href="../Admin_side/Login_Admin.html">Admin Page</a>
+              <a href="../Admin_side/Login_Admin.php">Admin Page</a>
             </li>
           </ul>
         </div>
@@ -221,3 +187,4 @@
     </footer>
   </body>
 </html>
+

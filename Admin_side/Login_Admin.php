@@ -16,7 +16,7 @@
         <a href="#">Movies</a>
         <a href="#">Cinemas</a>
         <a href="#">Experiences</a>
-        <a href="#">Shop</a>
+        <a href="#">Shop</a>  
         <a href="#">Events Booking</a>
     </nav>
 </div>

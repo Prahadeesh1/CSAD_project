@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Booking Dates and Time</title>
+    <link rel="stylesheet" href="CSS/Add_movie.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+
+<!-- Back Button -->
+<button class="back-button" onclick="document.location='Booking_details.html'">Back</button>
+
+<!-- Headline -->
+<h1>Edit Receipt Date and Time</h1>
+
+<div class="movie-form">
+            <div class="form-group">
+
+        <!-- Date and Time Picker -->
+        <label class="dropdown-title">Edit Dates and Times</label>
+        <div class="form-group">
+            <input type="text" id="dateTimePicker" placeholder="Select Dates and Times">
+        </div>
+        <button class="add-button">Update</button>
+    </div>
+        
+    <!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    // Initialize Flatpickr for date and time selection
+    document.addEventListener("DOMContentLoaded", function() {
+        flatpickr("#dateTimePicker", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            mode: "multiple",
+            time_24hr: true,
+            weekNumbers: true,
+            minDate: "today"
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ include 'db_connection.php';
 $conn = connect_db();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $title = $_POST['title'];
     $cast = $_POST['cast'];
     $director = $_POST['director'];
@@ -17,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $section = $_POST['section'];
     $theaters = $_POST['theaters'];
     $dates = $_POST['dates'];
+    $id = $_POST['id'];
 
     // image shit
     if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
@@ -30,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $query = "INSERT INTO movie_details (title, cast, director, rating, genre, language, subtitles, runtime, synopsis, section, theaters, dates, cover, cover_type)
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO movie_details (title, cast, director, rating, genre, language, subtitles, runtime, synopsis, section, theaters, dates, cover, cover_type,id)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($query);
 
@@ -44,7 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->bind_param(
-        "ssssssssssssss",
+        "sssssssssssssss",
+
         $title,
         $cast,
         $director,
@@ -58,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $theaters,
         $dates,
         $imageData,
-        $imageType
+        $imageType,
+        $id
     );
 
     if ($stmt->execute()) {

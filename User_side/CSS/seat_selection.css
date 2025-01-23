@@ -1,0 +1,310 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+/*General*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+body {
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.navbar {
+  display: flex;
+  align-items: center; /* Align logo and links vertically */
+  justify-content: space-between; /* Spread content across the header */
+  background-color: #8b0000;
+  color: white;
+  padding: 0; /* Remove gaps around the logo */
+  height: auto; /* Fixed height for consistent layout */
+}
+
+/* Logo Styling */
+.navbar img {
+  height: 100%; /* Dynamically scale logo to header height */
+  max-height: 100%; /* Prevent overflow */
+  margin: 0; /* Remove any margin around the logo */
+  object-fit: contain; /* Keep logo proportions */
+}
+/* Navigation Links */
+.navbar nav {
+  display: flex;
+  justify-content: space-around; /* Spread links evenly across the available space */
+  flex: 1; /* Allow nav to take up remaining space after logo */
+}
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem; /* Make links bigger */
+  font-weight: bold; /* Make links bold */
+  text-align: center; /* Center text within the allocated space */
+  padding: 0; /* Remove additional padding */
+  flex: 1; /* Each link takes up equal space */
+}
+.navbar a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Footer Section */
+footer {
+  background: linear-gradient(to bottom, black, rgb(148, 0, 0));
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto; /* Push the footer to the bottom */
+}
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.footer-column {
+  text-align: left;
+  margin: 0.5rem 1rem;
+}
+.footer-column h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f39c12;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin: 0.3rem 0;
+}
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #f39c12;
+}
+
+/* Follow Us Section */
+.footer-social {
+  margin-top: 1rem;
+  text-align: center;
+}
+.footer-social h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #f39c12;
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between icons */
+}
+.social-icon {
+  display: inline-block;
+}
+.social-img {
+  width: 40px; /* Adjust size of the icons */
+  height: 40px;
+  transition: opacity 0.3s ease;
+}
+.social-icon:hover .social-img {
+  opacity: 0.7; /* Change opacity on hover */
+}
+/* Footer Text */
+footer p {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.container-root {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* Full width */
+  padding: 20px 0;
+}
+
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content */
+  justify-content: center;
+  text-align: center;
+  width: 80%; /* Adjust this as needed to control content width */
+}
+
+.seat {
+  background-color: #444451;
+  height: 17px;
+  width: 20px;
+  margin: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  justify-items: center;
+}
+
+/* Seat Name Row (A, B, C, etc.) */
+.seat-name-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3px; /* Align with seat rows */
+  gap: 10px;
+}
+
+.seat-name {
+  color: #ff8400;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
+  width: 15px; /* Match seat width */
+  justify-items: center;
+  width: 20px;
+}
+
+.seat-name:nth-of-type(2) {
+  margin-right: 14px;
+}
+
+.seat-name:nth-last-of-type(2) {
+  margin-left: 14px;
+}
+
+.row {
+  display: flex;
+}
+
+.movie-container {
+  margin: 20px 0;
+}
+
+.movie-container select {
+  background-color: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.seat.selected {
+  background-color: #00eaff;
+  justify-content: space-evenly;
+}
+
+.seat.occupied {
+  background-color: #fff;
+  justify-content: space-evenly;
+}
+
+.seat:nth-of-type(3) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(3) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+.showcase {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.showcase .disabled {
+  pointer-events: none; /* Disables clicking */
+}
+
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.showcase li small {
+  margin-left: 10px;
+}
+
+.screen {
+  background-color: #fff;
+  height: 100px;
+  width: 400px;
+  margin: 15px 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+  position: relative; /* Add this to position the label */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen::before {
+  content: "Screen";
+  color: #000;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+p.text {
+  margin: 5px 0;
+  color: white;
+}
+
+p.text span {
+  color: #6feaf6;
+}
+
+.column-names {
+  display: flex;
+  justify-content: center;
+  margin-top: 3px;
+  margin-bottom: 10px;
+}
+
+.column-name {
+  color: #ff8400;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 20px;
+  justify-items: center;
+  margin: 0 3px;
+}
+
+#button-payment {
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}

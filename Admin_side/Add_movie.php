@@ -36,7 +36,16 @@
 
             <!-- Dropdown for Theaters -->
             <label class="dropdown-title">Add Theaters</label>
-            <input type="text" name="theaters" placeholder="Theater 1, Theater 2">
+            <select name="section" class="dropdown">
+                <option value="theatre1">Causeway Point</option>
+                <option value="theatre2">Ang Mo Kio</option>
+                <option value="theatre3">Sentosa cove</option>
+                <option value="theatre4">ION orchard</option>
+                
+
+            
+            </select>
+
         </div>
 
         <!-- Date and Time Picker -->
@@ -45,6 +54,7 @@
 
         <!-- Movie Form -->
         <div class="movie-form">
+            <textarea name="id" placeholder="Enter movie ID" rows="2"></textarea>
             <textarea name="title" placeholder="Enter Movie Title" rows="1" required></textarea>
             <textarea name="cast" placeholder="Enter Cast" rows="2"></textarea>
             <textarea name="director" placeholder="Enter Director" rows="1"></textarea>
