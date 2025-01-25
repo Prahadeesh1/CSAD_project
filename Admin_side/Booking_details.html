@@ -26,100 +26,131 @@
     <!-- Back Button -->
     <button class="back-button" onclick="document.location='Customer_details.html'">Back to Customers</button>
 
-    <!-- Customer Details List -->
-    <div class="customer-container">
-        <div class="customer-row">
-            <input type="radio" class="customer-select" name="customer" id="customer1">
-            <div class="customer-details">
-                <div class="customer-info">
-                    <h2>Receipt 001</h2>
-                    <div class="customer-info-inline">
-                        <p><b>ID:</b> NA2412290201025</p>
-                        <p><b>Cinema:</b> Cinema N</p>
-                        <p><b>Theater:</b> Hall A</p>
-                        <p><b>Date:</b>2024/12/29</p>
-                        <p><b>Movie:</b> Avengers</p>
-                        <p><b>Time:</b> 10:00AM</p>
-                        <p><b>Seats:</b> A1, A2, A3</p>
-                    </div>
+    <!-- Filter Section -->
+    <form>
+        Select Cinema:
+        <select name="cin-fil">
+            <option value="CPA">Causeway Point-Hall A</option>
+            <option value="CPB">Causeway Point-Hall B</option>
+            <option value="JEMA">JEM-Hall A</option>
+            <option value="JEMB">JEM-Hall B</option>
+            <option value="T1A">Tampines 1-Hall A</option>
+            <option value="T1B">Tampines 1-Hall B</option>
+            <option value="IONA">ION Orchard-Hall A</option>
+            <option value="IONB">ION Orchard-Hall B</option>
+        </select>
+        Receipt ID:
+        <input type="text" name="receipt-id">
+        <input type="submit" value="Filter">
+    </form>
+
+    <table class="customer-table">
+        <thead>
+            <tr>
+                <th>Receipt</th>
+                <th>ID</th>
+                <th>Cinema</th>
+                <th>Date</th>
+                <th>Movie</th>
+                <th>Time</th>
+                <th>Seats</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>NA2412290201025</td>
+                <td>Cinema N, Hall A</td>
+                <td>2024/12/29</td>
+                <td>Avengers</td>
+                <td>10:00 AM</td>
+                <td>A1, A2, A3</td>
+                <td>
+                    <button class="edit-btn" onclick="document.location='Edit_Booking.html'">Edit</button>
+                    <button class="delete-btn" onclick="showPopup()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>MA2412310306026</td>
+                <td>Cinema M, Hall A</td>
+                <td>2024/12/31</td>
+                <td>Kraven</td>
+                <td>7:30 PM</td>
+                <td>B1, B2</td>
+                <td>
+                    <button class="edit-btn" onclick="document.location='Edit_Booking.html'">Edit</button>
+                    <button class="delete-btn" onclick="showPopup()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>MB2412310406026</td>
+                <td>Cinema M, Hall B</td>
+                <td>2024/12/31</td>
+                <td>Transformers</td>
+                <td>7:30 PM</td>
+                <td>B1, B2</td>
+                <td>
+                    <button class="edit-btn" onclick="document.location='Edit_Booking.html'">Edit</button>
+                    <button class="delete-btn" onclick="showPopup()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>CA2501020402027</td>
+                <td>Cinema C, Hall B</td>
+                <td>2025/01/02</td>
+                <td>Transformers</td>
+                <td>11:00 AM</td>
+                <td>C1, C2</td>
+                <td>
+                    <button class="edit-btn" onclick="document.location='Edit_Booking.html'">Edit</button>
+                    <button class="delete-btn" onclick="showPopup()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>005</td>
+                <td>CB2501020402027</td>
+                <td>Cinema C, Hall A</td>
+                <td>2025/01/02</td>
+                <td>Transformers</td>
+                <td>11:00 AM</td>
+                <td>B3, B4, B5</td>
+                <td>
+                    <button class="edit-btn" onclick="document.location='Edit_Booking.html'">Edit</button>
+                    <button class="delete-btn" onclick="showPopup()">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+        <!-- Popup Modal -->
+        <div id="popup" class="popup-modal">
+            <div class="popup-content">
+                <h2>WARNING</h2>
+                <p>Selected receipt will be permanently deleted!</p>
+                <div class="popup-actions">
+                    <button class="popup-back" onclick="closePopup()">Back</button>
+                    <button class="popup-delete" onclick="deleteMovies()">Delete</button>
                 </div>
             </div>
         </div>
-
-        <div class="customer-row">
-            <input type="radio" class="customer-select" name="customer" id="customer2">
-            <div class="customer-details">
-                <div class="customer-info">
-                    <h2>Receipt 002</h2>
-                    <div class="customer-info-inline">
-                        <p><b>ID:</b> MA2412310306026</p>
-                        <p><b>Cinema:</b> Cinema M</p>
-                        <p><b>Theater:</b> Hall A</p>
-                        <p><b>Date:</b>2024/12/31</p>
-                        <p><b>Movie:</b> Kraven</p>
-                        <p><b>Time:</b> 7:30 PM</p>
-                        <p><b>Seats:</b> B1, B2</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="customer-row">
-            <input type="radio" class="customer-select" name="customer" id="customer2">
-            <div class="customer-details">
-                <div class="customer-info">
-                    <h2>Receipt 003</h2>
-                    <div class="customer-info-inline">
-                        <p><b>ID:</b> MB2412310406026</p>
-                        <p><b>Cinema:</b> Cinema M</p>
-                        <p><b>Theater:</b> Hall B</p>
-                        <p><b>Date:</b>2024/12/31</p>
-                        <p><b>Movie:</b> Transformers</p>
-                        <p><b>Time:</b> 7:30 PM</p>
-                        <p><b>Seats:</b> B1, B2</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="customer-row">
-            <input type="radio" class="customer-select" name="customer" id="customer3">
-            <div class="customer-details">
-                <div class="customer-info">
-                    <h2>Receipt 004</h2>
-                    <div class="customer-info-inline">
-                        <p><b>ID:</b> CA2501020402027</p>
-                        <p><b>Cinema:</b> Cinema C</p>
-                        <p><b>Theater:</b> Hall A</p>
-                        <p><b>Date:</b>2025/01/02</p>
-                        <p><b>Movie:</b> Transformers</p>
-                        <p><b>Time:</b> 11:00 AM</p>
-                        <p><b>Seats:</b> C1, C2</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="customer-row">
-            <input type="radio" class="customer-select" name="customer" id="customer3">
-            <div class="customer-details">
-                <div class="customer-info">
-                    <h2>Receipt 005</h2>
-                    <div class="customer-info-inline">
-                        <p><b>ID:</b> CB2501020402027</p>
-                        <p><b>Cinema:</b> Cinema C</p>
-                        <p><b>Theater:</b> Hall B</p>
-                        <p><b>Date:</b>2025/01/02</p>
-                        <p><b>Movie:</b> Transformers</p>
-                        <p><b>Time:</b> 11:00 AM</p>
-                        <p><b>Seats:</b> B3,B4,B5</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Edit Button -->
-    <button class="edit-button"onclick="document.location='Edit_Booking.html'">Edit</button>
+        <!--pop up delete js-->
+        <script>
+            function showPopup() {
+                document.getElementById("popup").style.display = "flex";
+            }
+    
+            function closePopup() {
+                document.getElementById("popup").style.display = "none";
+            }
+    
+            function deleteMovies() {
+                // Logic to delete selected movies
+                alert("Receipt deleted successfully!");
+                closePopup();
+            }
+        </script>
 </body>
 </html>
