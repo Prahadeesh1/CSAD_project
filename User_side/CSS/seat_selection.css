@@ -300,11 +300,30 @@ p.text span {
   margin: 0 3px;
 }
 
-#button-particulars {
-  width: 130px;
-  height: 30px;
-  border-radius: 5px;
-  border: none;
-  margin-top: 10px;
+#button-previouspage {
+  width: 100px;
+  height: 35px;
   cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: red solid;
+  font-size: 17px;
+  font-family: sans-serif;
+  color: black;
+  background-color: #444451;
+  padding: 3px;
+}
+
+#button-next {
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: #00eaff solid;
+  font-size: 17px;
+  font-family: sans-serif;
+  color: black;
+  background-color: white;
+  padding: 3px;
 }
