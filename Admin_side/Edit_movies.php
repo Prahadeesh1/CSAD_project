@@ -24,7 +24,7 @@
 <h1>Edit Movies</h1>
 
 <!-- Back Button -->
-<button class="back-button" onclick="document.location='Page_admin.html'">Back to Admin</button>
+<button class="back-button" onclick="document.location='Page_admin.php'">Back to Admin</button>
 
 <!-- Movies List -->
 <div class="movie-container">
@@ -48,7 +48,7 @@
             echo "        </div>";
             echo "    </div>";
             echo "    <div class='movie-buttons'>";
-            echo "        <button class='details-btn' onclick=\"location.href='test.php?movie_id=" . urlencode($movie['id']) . "'\">Details</button>";
+            echo "        <button class='details-btn' onclick=\"location.href='Edit_details.php?id=" . urlencode($movie['id']) . "'\">Details</button>";
             echo "        <button class='time-btn' onclick=\"location.href='Edit_times.php?movie_id=" . urlencode($movie['id']) . "'\">Time</button>";
             echo "    </div>";
             echo "</div>";

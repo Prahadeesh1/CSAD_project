@@ -36,15 +36,7 @@
 
             <!-- Dropdown for Theaters -->
             <label class="dropdown-title">Add Theaters</label>
-            <select name="section" class="dropdown">
-                <option value="theatre1">Causeway Point</option>
-                <option value="theatre2">Ang Mo Kio</option>
-                <option value="theatre3">Sentosa cove</option>
-                <option value="theatre4">ION orchard</option>
-                
-
-            
-            </select>
+            <input type="text">
 
         </div>
 

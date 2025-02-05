@@ -16,7 +16,7 @@
           <label>Admin ID</label>
           <input type="text" name="adminid" value="<?php echo $adminid; ?>">
         </div>
-        <div class="input-group">
+        <div class="input-group">x
           <label>Email</label>
           <input type="email" name="email" value="<?php echo $email; ?>">
         </div>
