@@ -12,8 +12,9 @@
     <div class="navbar">
       <img src="images/logo.png" alt="Logo" />
       <nav>
-        <a href="#">Movies</a>
-        <a href="#">Cinemas</a>
+        <a href="main_page.php">Home</a>
+        <a href="moviesection.php">Movies</a>
+        <a href="cinemas.html">Cinemas</a>
         <a href="#">Experiences</a>
         <a href="#">Shop</a>
         <a href="#">Events Booking</a>

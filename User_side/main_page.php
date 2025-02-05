@@ -11,6 +11,7 @@
     <div class="navbar">
       <img src="images/logo.png" alt="Logo" />
       <nav>
+        <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
         <a href="cinemas.html">Cinemas</a>
         <a href="#">Experiences</a>
@@ -81,7 +82,7 @@
         <div class="movie-grid">
         <?php
 
-        $movies = json_decode(file_get_contents("http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php"), true); //Remember to change this to the correct path
+        $movies = json_decode(file_get_contents("http://localhost/CSAD_Project/Admin_side/movie_api.php"), true); //Remember to change this to the correct path
                                                                                                                                                                           //This path is for my PC only
         if ($movies['success']) {
             $latestMovies = array_slice($movies['movies'], 0, 5);

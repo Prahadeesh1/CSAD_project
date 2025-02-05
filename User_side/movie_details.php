@@ -1,9 +1,9 @@
 <?php
-$movies = json_decode(file_get_contents("http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php"), true);
+$movies = json_decode(file_get_contents("http://localhost/CSAD_Project//Admin_side/movie_api.php"), true);
 
 if (isset($_GET['id'])) {
     $movieId = $_GET['id'];
-    $apiUrl = "http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php";
+    $apiUrl = "http://localhost/CSAD_project/Admin_side/movie_api.php";
     
     // Fetch the movies data from the API
     $moviesData = json_decode(file_get_contents($apiUrl), true);
@@ -56,6 +56,7 @@ if (isset($_GET['id'])) {
     <!-- Header Navigation -->
     <div class="navbar">
         <img src="images/logo.png" alt="Logo" />
+        <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
         <a href="#">Cinemas</a>
         <a href="#">Experiences</a>

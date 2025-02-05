@@ -1,9 +1,9 @@
 <?php
-$movies = json_decode(file_get_contents("http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php"), true);
+$movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
 
 if (isset($_GET['id'])) {
     $movieId = $_GET['id'];
-    $apiUrl = "http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php";
+    $apiUrl = "http://localhost/CSAD_project/Admin_side/movie_api.php";
     
     // Fetch the movies data from the API
     $moviesData = json_decode(file_get_contents($apiUrl), true);
@@ -372,6 +372,7 @@ if (isset($_GET['id'])) {
   const countElement = document.getElementById('count');
   const totalElement = document.getElementById('total');
   const confirmButton = document.getElementById('confirm-booking');
+  const selectedSeatsDisplay = document.getElementById('selected');
 
   const pricePerSeat = 10; // Price per seat
   let selectedSeats = [];
@@ -380,6 +381,7 @@ if (isset($_GET['id'])) {
   function updatePrice() {
     countElement.textContent = selectedSeats.length;
     totalElement.textContent = selectedSeats.length * pricePerSeat;
+    selectedSeatsDisplay.textContent = "Seat Selected: " + (selectedSeats.length > 0 ? selectedSeats.join(', ') : "None");
   }
 
   // Function to handle seat selection
@@ -397,7 +399,6 @@ if (isset($_GET['id'])) {
           selectedSeats.push(seatValue);
         }
         updatePrice();
-        document.getElementById('selected').textContent = "Seat Selected: " + selectedSeats.map(seat => seat.getAttribute('value')).join(', ');
       });
     }
   });

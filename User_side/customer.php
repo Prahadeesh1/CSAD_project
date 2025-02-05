@@ -1,12 +1,12 @@
 <?php
-$movies = json_decode(file_get_contents("http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php"), true);
+$movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
 
 if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
     $movieId = $_GET['id'];
     $seats = explode(',', $_GET['seats']);
     $totalPrice = $_GET['price'];
 
-    $apiUrl = "http://localhost/CSAD_Project/Praha's%20one/CSAD_project/Admin_side/movie_api.php";
+    $apiUrl = "http://localhost/CSAD_project/Admin_side/movie_api.php";
     
     // Fetch the movies data from the API
     $moviesData = json_decode(file_get_contents($apiUrl), true);
@@ -95,11 +95,11 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
         <h3 id="ticket-price">Total Price: $<?php echo $totalPrice; ?></h3>
 
         <div class="customer-form">
-          <form id="customer-details" action="orders.php" method="post">
+          <form id="customer-details">
+            <input type="hidden" name="movie" value="<?php echo htmlspecialchars($selectedMovie['title']); ?>">
             <input type="hidden" name="theater" value="<?php echo htmlspecialchars($selectedMovieDate['theater']); ?>">
             <input type="hidden" name="seats" value="<?php echo htmlspecialchars(implode(',', $seats)); ?>">
-            <input type="hidden" name="day" value="<?php echo htmlspecialchars($selectedMovieDate['day']); ?>">
-            <input type="hidden" name="month" value="<?php echo htmlspecialchars($selectedMovieDate['month']); ?>">
+            <input type="hidden" name="showtime" value="<?php echo htmlspecialchars($selectedMovieDate['show_time']);?>">
             <input type="hidden" name="price" value="<?php echo $totalPrice; ?>">
 
             <div class="mb-3">
@@ -125,7 +125,8 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
 
             <div class="d-flex justify-content-center">
               <a href="seat_selection.php"><button type="button" id="button-return" class="btn btn-primary">Return to Seat Selection</button></a>
-              <button type="submit" id="button-payment" class="btn btn-primary">Payment</button>
+              <button type="button" id="button-payment" class="btn btn-primary">Payment</button>
+              </a>
           </form>
         </div>
       </div>
@@ -198,41 +199,31 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const buttonPayment = document.getElementById('button-payment');
-      const ticketPrice = document.getElementById('ticket-price');
-      const paymentLinks = {
-    10: "https://buy.stripe.com/test_6oE7to0em3L3da0144", 
-    20: "https://buy.stripe.com/test_3cs294aT0bdv2vm145", 
-    30: "https://buy.stripe.com/test_cN2aFAbX481j4DueUW", 
-    40: "https://buy.stripe.com/test_28o00W7GO0yRee428b",
-    50: "https://buy.stripe.com/test_5kA5lg8KS5Tb9XOfZ2",
-    60: "https://buy.stripe.com/test_7sI7togdk2GZ5HyfZ3",
-    70: "https://buy.stripe.com/test_6oEfZUf9gepH3zqaEK",
-    80: "https://buy.stripe.com/test_9AQ5lgbX4dlD3zq9AH",
-    90: "https://buy.stripe.com/test_aEU9Bw4uCchz2vmdQZ",
-    100: "https://buy.stripe.com/test_8wM00Wf9gftL8TK28g"
-  };
+    const buttonPayment = document.getElementById("button-payment");
 
-  buttonPayment.addEventListener('click', function () {
+    buttonPayment.addEventListener("click", function () {
+        const form = document.getElementById("customer-details");
+        const formData = new FormData(form);
 
-    if (ticketPrice === 0) {
-      alert("Please select seats before proceeding to payment.");
-      return;
-    }
-
-    // Get the corresponding payment link
-    const paymentLink = paymentLinks[totalPrice];
-
-    if (!paymentLink) {
-      alert("Invalid total price. Please try again.");
-      return;
-    }
-
-    // Redirect to the corresponding Stripe payment page
-    window.open(paymentLink, "_blank"); // Opens in a new tab
-  });
+        fetch("orders_api.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.json()) 
+        .then(data => {
+            if (data.success && data.payment_url) {
+                // Redirect to Stripe checkout page
+                window.location.href = data.payment_url;
+            } else {
+                alert("Error: " + (data.message || "Something went wrong."));
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An unexpected error occurred.");
+        });
     });
+  });
   </script>
-
-</body>
+  </body>
 </html>

@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $section = $_POST['section'];
     $theaters = $_POST['theaters'];
     $dates = $_POST['dates'];
+    $showtime = explode(',', $dates);
+    
 
     // image shit
     if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
@@ -76,35 +78,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     }
 
-    $query2 = "INSERT INTO screenings (theater, id, show_time)
+    foreach($showtime as $date){
+        $query2 = "INSERT INTO screenings (theater, id, show_time)
               VALUES (?, ?, ?)";
-    $stmt2 = $conn->prepare($query2);
-    if (!$stmt2) {
-        echo json_encode([
-            "success" => false,
-            "message" => "Database error: " . $conn->error
-        ]);
-        exit;
-    }
-    $stmt2->bind_param(
-        "sis",
+        $stmt2 = $conn->prepare($query2);
+        if (!$stmt2) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Database error: " . $conn->error
+            ]);
+            exit;
+        }
+        $stmt2->bind_param(
+            "sis",
+            $theaters,
+            $id,
+            $date,
+        );
 
-        $theaters,
-        $id,
-        $dates,
-    );
-
-    if ($stmt2->execute()) {
-        echo json_encode([
-            "success" => true,
-            "message" => "Screenings added successfully"
-        ]);
-    } else {
-        echo json_encode([
-            "success" => false,
-            "message" => "Failed to add movie: " . $stmt2->error
-        ]);
+        if ($stmt2->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "Screenings added successfully"
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Failed to add movie: " . $stmt2->error
+            ]);
+        }
     }
+
+    $query3 = "UPDATE screenings
+                   SET `month` = DATE_FORMAT(show_time, '%b'),
+                       `day` = DATE_FORMAT(show_time, '%e'),
+                       `dayofWeek` = DATE_FORMAT(show_time, '%a'),
+                       `time` = DATE_FORMAT(show_time, '%k%i')
+                   WHERE id = ?";   
+        $stmt3 = $conn->prepare($query3);
+        $stmt3->bind_param("i", $id);
+        $stmt3->execute();
+        $stmt3->close();
 
     $stmt->close();
     $stmt2->close();
