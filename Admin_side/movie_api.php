@@ -78,10 +78,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     }
 
-    foreach($showtime as $date){
-        $query2 = "INSERT INTO screenings (theater, id, show_time)
-              VALUES (?, ?, ?)";
+    $query2 = "SELECT theater_id FROM theater WHERE name = ?";
         $stmt2 = $conn->prepare($query2);
+        if (!$stmt2) {
+            echo json_encode([
+                "success" => false,
+                "message" => "Database error: " . $conn->error
+            ]);
+        }
+
+        $stmt2->bind_param("s", $theaters);
+        $stmt2->execute();
+        $result = $stmt2->get_result();
+        $theater_id = $result->fetch_assoc()['theater_id'] ?? null;
+        $stmt2->close();
+
+    foreach($showtime as $date){
+        $query3 = "INSERT INTO screenings (theater_id, id, show_time)
+              VALUES (?, ?, ?)";
+        $stmt3 = $conn->prepare($query3);
         if (!$stmt2) {
             echo json_encode([
                 "success" => false,
@@ -89,14 +104,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
             exit;
         }
-        $stmt2->bind_param(
-            "sis",
-            $theaters,
+        $stmt3->bind_param(
+            "iis",
+            $theater_id,
             $id,
             $date,
         );
 
-        if ($stmt2->execute()) {
+        if ($stmt3->execute()) {
             echo json_encode([
                 "success" => true,
                 "message" => "Screenings added successfully"
@@ -109,19 +124,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $query3 = "UPDATE screenings
+    $query4 = "UPDATE screenings
                    SET `month` = DATE_FORMAT(show_time, '%b'),
                        `day` = DATE_FORMAT(show_time, '%e'),
                        `dayofWeek` = DATE_FORMAT(show_time, '%a'),
                        `time` = DATE_FORMAT(show_time, '%k%i')
                    WHERE id = ?";   
-        $stmt3 = $conn->prepare($query3);
-        $stmt3->bind_param("i", $id);
-        $stmt3->execute();
-        $stmt3->close();
+        $stmt4 = $conn->prepare($query4);
+        $stmt4->bind_param("i", $id);
+        $stmt4->execute();
+        $stmt4->close();
 
     $stmt->close();
-    $stmt2->close();
+    $stmt3->close();
     $conn->close();
 
     // fetch shit
@@ -130,7 +145,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query1 = "SELECT * FROM movie_details";
     $result1 = $conn->query($query1);
 
-    $query2 = "SELECT * FROM screenings";
+    $query2 = "SELECT s.*, t.name AS theater_name 
+           FROM screenings s
+           JOIN theater t ON s.theater_id = t.theater_id";
     $result2 = $conn->query($query2);
 
     $movies = [];

@@ -67,32 +67,43 @@ try {
             throw new Exception("Movie not found");
         }
 
-        // Retrieve Screening ID
-        $query3 = "SELECT id FROM screenings WHERE theater = ? AND id = ? AND show_time = ?";
+        $query3 = "SELECT theater_id FROM theater WHERE name = ?";
         $stmt3 = $conn->prepare($query3);
         if (!$stmt3) {
             throw new Exception("Database error: " . $conn->error);
         }
-
-        $stmt3->bind_param("sis", $theater, $movie_id, $showtime);
+        $stmt3->bind_param("s", $theater);
         $stmt3->execute();
         $result = $stmt3->get_result();
-        $screening_id = $result->fetch_assoc()['id'] ?? null;
+        $theater_id = $result->fetch_assoc()["theater_id"] ?? null;
         $stmt3->close();
+
+        // Retrieve Screening ID
+        $query4 = "SELECT id FROM screenings WHERE theater_id = ? AND id = ? AND show_time = ?";
+        $stmt4 = $conn->prepare($query4);
+        if (!$stmt3) {
+            throw new Exception("Database error: " . $conn->error);
+        }
+
+        $stmt4->bind_param("iis", $theater_id, $movie_id, $showtime);
+        $stmt4->execute();
+        $result = $stmt4->get_result();
+        $screening_id = $result->fetch_assoc()['id'] ?? null;
+        $stmt4->close();
 
         if (!$screening_id) {
             throw new Exception("Screening not found");
         }
 
         // Insert Tickets
-        $stmt4 = $conn->prepare("INSERT INTO tickets (customer_id, screening_id, seat_number, cost, payment) VALUES (?, ?, ?, ?, 0)");
-        if (!$stmt4) {
+        $stmt5 = $conn->prepare("INSERT INTO tickets (customer_id, screening_id, seat_number, cost, payment) VALUES (?, ?, ?, ?, 0)");
+        if (!$stmt5) {
             throw new Exception("Database error: " . $conn->error);
         }
 
-        $stmt4->bind_param("iiss", $customer_id, $screening_id, $seats, $price);
-        $stmt4->execute();
-        $stmt4->close();
+        $stmt5->bind_param("iiss", $customer_id, $screening_id, $seats, $price);
+        $stmt5->execute();
+        $stmt5->close();
 
         // **Commit Transaction** if all queries were successful
         $conn->commit();

@@ -89,7 +89,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
         . htmlspecialchars($selectedMovieDate['month']). " " 
         . htmlspecialchars($selectedMovieDate['dayofWeek']); ?></div>
           <div>Time: <?php echo htmlspecialchars($selectedMovieDate['time']); ?></div>
-          <div>Theater: <?php echo htmlspecialchars($selectedMovieDate['theater']); ?></div>
+          <div>Theater: <?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?></div>
           <div>Seat Selected: <?php echo  htmlspecialchars(implode(', ', $seats)); ?></div>
         </div>
         <h3 id="ticket-price">Total Price: $<?php echo $totalPrice; ?></h3>
@@ -97,7 +97,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
         <div class="customer-form">
           <form id="customer-details">
             <input type="hidden" name="movie" value="<?php echo htmlspecialchars($selectedMovie['title']); ?>">
-            <input type="hidden" name="theater" value="<?php echo htmlspecialchars($selectedMovieDate['theater']); ?>">
+            <input type="hidden" name="theater" value="<?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?>">
             <input type="hidden" name="seats" value="<?php echo htmlspecialchars(implode(',', $seats)); ?>">
             <input type="hidden" name="showtime" value="<?php echo htmlspecialchars($selectedMovieDate['show_time']);?>">
             <input type="hidden" name="price" value="<?php echo $totalPrice; ?>">

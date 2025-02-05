@@ -11,7 +11,8 @@ if (isset($_GET['id'])) {
     if ($moviesData['success']) {
       // Search for the selected movie in the API response
       $selectedMovie = null;
-      $selectedMovieDate = null;
+      $selectedMovieDate = [];
+      $selectedMovietheater = null;
   
       foreach ($moviesData['movies'] as $movie) {
           if ($movie['id'] == $movieId) {
@@ -28,14 +29,13 @@ if (isset($_GET['id'])) {
       // Search for screenings of the selected movie
       foreach ($moviesData['screenings'] as $screening) {
           if ($screening['id'] == $movieId) { // Ensure screening references the correct movie
-              $selectedMovieDate = $screening;
+              $selectedMovieDate[]= $screening;
           }
       }
       if (!$selectedMovieDate) {
         echo "<p> No scheduled screenings available.</p>";
         exit;
     }
-
   } else {
       echo "<p>Failed to fetch movie data.</p>";
       exit;
@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
         <img src="images/logo.png" alt="Logo" />
         <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
-        <a href="#">Cinemas</a>
+        <a href="cinemas.html">Cinemas</a>
         <a href="#">Experiences</a>
         <a href="#">Shop</a>
         <a href="#">Events Booking</a>
@@ -89,108 +89,70 @@ if (isset($_GET['id'])) {
 
     <!-- Dates Section -->
     <h3 class="date-title">Select Date</h3>
-    <div class="div-date">
-        <button class="date-button date-option" type="button">
-            <p class="date"><?php echo htmlspecialchars($selectedMovieDate['dayofWeek']); ?></p>
-            <h2><?php echo htmlspecialchars($selectedMovieDate['day']); ?></h2>
-            <p class="date"><?php echo htmlspecialchars($selectedMovieDate['month']); ?></p>
-        </button>
-        <button class="date-button date-option" type="button">
-            <p class="date">SAT</p>
-            <h2>11</h2>
-            <p class="date">JAN</p>
-        </button>
-        <button class="date-button date-option" type="button">
-            <p class="date">SUN</p>
-            <h2>12</h2>
-            <p class="date">JAN</p>
-        </button>
-        <button class="date-button date-option" type="button">
-            <p class="date">MON</p>
-            <h2>13</h2>
-            <p class="date">JAN</p>
-        </button>
-    </div>
+<div class="div-date">
+  <?php 
+    $uniqueDates = [];
+    foreach ($selectedMovieDate as $date) {
+        $key = $date['dayofWeek'] . $date['day'] . $date['month']; // Unique key
+        if (!isset($uniqueDates[$key])) {
+            $uniqueDates[$key] = $date;
+        }
+    }
+  
+    foreach ($uniqueDates as $date) : 
+  ?>
+    <button class="date-button date-option" type="button">
+        <p class="date"><?php echo htmlspecialchars($date['dayofWeek']); ?></p>
+        <h2><?php echo htmlspecialchars($date['day']); ?></h2>
+        <p class="date"><?php echo htmlspecialchars($date['month']); ?></p>
+    </button>
+  <?php endforeach; ?>
+</div>
 
+  
     <!-- Location & Time Section -->
     <div class="section-container">
     <div class="time-header">
-      <h3 class="time-title">Select Cinema & Time</h3>
-      <div class="region-select">
-        <label for="region-dropdown">Region:</label>
-        <select id="region-dropdown">
-          <option value="" selected>All</option>
-          <option value="1">North</option>
-          <option value="2">West</option>
-          <option value="3">East</option>
-          <option value="4">Central</option>
-        </select>
-      </div>
+        <h3 class="time-title">Select Cinema & Time</h3>
     </div>
 
-    <div class="location-north">
-      <h3 class="location-title" data-location-id="causeway"><?php echo htmlspecialchars($selectedMovieDate['theater']); ?></h3>
-      <div class="div-time">
-        <button class="time-button time-option" data-location="Singapore, Causeway Point">
-          <p><?php echo htmlspecialchars($selectedMovieDate['time']); ?></p>
-        </button>
-        <button class="time-button time-option" data-location="Singapore, Causeway Point">
-          <p>2:00PM</p>
-        </button>
-        <button class="time-button time-option" data-location="Singapore, Causeway Point">
-          <p>6:30PM</p>
-        </button>
-      </div>
-      <hr class="location-divider" />
-    </div>
+    <?php 
+    // Step 1: Group screenings by date and theater_name
+    $groupedScreenings = [];
+    foreach ($selectedMovieDate as $screening) {
+        $dateKey = $screening['dayofWeek'] . $screening['day'] . $screening['month']; // Unique date key
+        $theater = $screening['theater_name'];
+        $time = $screening['time'];
 
-    <div class="location-west">
-      <h3 class="location-title" data-location-id="jem">Singapore, JEM</h3>
-      <div class="div-time">
-        <button class="time-button" data-location="Singapore, JEM">
-          <p>10:30AM</p>
-        </button>
-        <button class="time-button" data-location="Singapore, JEM">
-          <p>3:00PM</p>
-        </button>
-        <button class="time-button" data-location="Singapore, JEM">
-          <p>7:00PM</p>
-        </button>
-      </div>
-      <hr class="location-divider" id="lotte-world-divider" />
-    </div>
+        if (!isset($groupedScreenings[$dateKey])) {
+            $groupedScreenings[$dateKey] = [];
+        }
+        if (!isset($groupedScreenings[$dateKey][$theater])) {
+            $groupedScreenings[$dateKey][$theater] = [];
+        }
+        $groupedScreenings[$dateKey][$theater][] = $time;
+    }
 
-    <div class="location-east">
-      <h3 class="location-title" data-location-id="suntec">Singapore, Tampines 1</h3>
-      <div class="div-time">
-        <button class="time-button" data-location="Singapore, Tampines 1">
-          <p>10:15AM</p>
-        </button>
-        <button class="time-button" data-location="Singapore, Tampines 1">
-          <p>1:30PM</p>
-        </button>
-        <button class="time-button" data-location="Singapore, Tampines 1">
-          <p>5:45PM</p>
-        </button>
-      </div>
-      <hr class="location-divider" />
-    </div>
+    // Step 2: Display theaters & times but keep them hidden initially
+    foreach ($groupedScreenings as $dateKey => $theaters) : ?>
+        <div class="cinema-container" data-date="<?php echo htmlspecialchars($dateKey); ?>" style="display: none;">
+            <?php foreach ($theaters as $theater => $times) : ?>
+                <h3 class="location-title"><?php echo htmlspecialchars($theater); ?></h3>
+                <div class="div-time">
+                    <?php foreach ($times as $time) : ?>
+                        <button class="time-button time-option" data-location="<?php echo htmlspecialchars($theater); ?>" type="button">
+                            <p><?php echo htmlspecialchars($time); ?></p>
+                        </button>
+                    <?php endforeach; ?>
+                </div>
+                <hr class="location-divider" />
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-    <div class="location-central">
-      <h3 class="location-title" data-location-id="orchard">Singapore, Ion Orchard</h3>
-      <div class="div-time">
-        <button class="time-button" data-location="Singapore, Ion Orchard">
-          <p>11:45AM</p>
-        </button>
-        <button class="time-button" data-location="Singapore, Ion Orchard">
-          <p>4:30PM</p>
-        </button>
-        <button class="time-button" data-location="Singapore, Ion Orchard">
-          <p>6:15PM</p>
-        </button>
-      </div>
-    </div>
-    </div>
+
+
   <div id="popup-modal" class="modal">
     <div class="modal-content">
       <img id="modal-poster" src="<?php echo htmlspecialchars($selectedMovie['cover']); ?>">
@@ -323,38 +285,6 @@ if (isset($_GET['id'])) {
       });
     });
 
-    regionDropdown.addEventListener("change", () => {
-      const selectedRegion = regionDropdown.value;
-      const northLocations = document.querySelectorAll(".location-north");
-      const westLocations = document.querySelectorAll(".location-west");
-      const eastLocations = document.querySelectorAll(".location-east");
-      const centralLocations = document.querySelectorAll(".location-central");
-      const outletDivider = document.getElementById("outlet-divider");
-
-      sgLocations.forEach((location) => (location.style.display = "none"));
-      seoulLocations.forEach((location) => (location.style.display = "none"));
-
-      if (selectedRegion === "1") {
-        northLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
-      } else if (selectedRegion === "2") {
-        westLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
-      } else if (selectedRegion === "3") {
-        eastLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
-      } else if (selectedRegion == "4") {
-        centralLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
-      } else {
-        northLocations.forEach((location) => (location.style.display = "block"));
-        westLocations.forEach((location) => (location.style.display = "block"));
-        eastLocations.forEach((location) => (location.style.display = "block"));
-        centralLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "block";
-      }
-    });
-
     // Close the modal when clicking the close button
     closeModal.addEventListener("click", () => {
       modal.style.display = "none";
@@ -366,6 +296,32 @@ if (isset($_GET['id'])) {
         modal.style.display = "none";
       }
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const dateButtons = document.querySelectorAll(".date-button");
+        const cinemaContainers = document.querySelectorAll(".cinema-container");
+
+        dateButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                // Get the selected date key
+                const selectedDateKey = button.querySelector("p.date").innerText + 
+                                        button.querySelector("h2").innerText + 
+                                        button.querySelector("p.date:last-of-type").innerText;
+
+                // Hide all cinema containers first
+                cinemaContainers.forEach(container => {
+                    container.style.display = "none";
+                });
+
+                // Show the matched cinema container for the selected date
+                const matchingContainer = document.querySelector(`[data-date="${selectedDateKey}"]`);
+                if (matchingContainer) {
+                    matchingContainer.style.display = "block";
+                }
+            });
+        });
+    });
+
   </script>
 
 </body>

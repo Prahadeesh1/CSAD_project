@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
         . htmlspecialchars($selectedMovieDate['month']). " " 
         . htmlspecialchars($selectedMovieDate['dayofWeek']); ?></div>
         <div>Time: <?php echo htmlspecialchars($selectedMovieDate['time']); ?></div>
-        <div>Theater: <?php echo htmlspecialchars($selectedMovieDate['theater']); ?></div>
+        <div>Theater: <?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?></div>
         <div id="selected">Seat Selected: </div>
       </div>
       <h3 id="ticket-price">Total Price: $<span id=total>0</span></h3>
