@@ -360,35 +360,36 @@
 
     regionDropdown.addEventListener("change", () => {
       const selectedRegion = regionDropdown.value;
+
       const northLocations = document.querySelectorAll(".location-north");
       const westLocations = document.querySelectorAll(".location-west");
       const eastLocations = document.querySelectorAll(".location-east");
       const centralLocations = document.querySelectorAll(".location-central");
-      const outletDivider = document.getElementById("outlet-divider");
 
-      sgLocations.forEach((location) => (location.style.display = "none"));
-      seoulLocations.forEach((location) => (location.style.display = "none"));
+      // Hide all locations first
+      northLocations.forEach((location) => (location.style.display = "none"));
+      westLocations.forEach((location) => (location.style.display = "none"));
+      eastLocations.forEach((location) => (location.style.display = "none"));
+      centralLocations.forEach((location) => (location.style.display = "none"));
 
+      // Show the selected region
       if (selectedRegion === "1") {
         northLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
       } else if (selectedRegion === "2") {
         westLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
       } else if (selectedRegion === "3") {
         eastLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
-      } else if (selectedRegion == "4") {
+      } else if (selectedRegion === "4") {
         centralLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "none";
       } else {
+        // If "All" is selected, show everything
         northLocations.forEach((location) => (location.style.display = "block"));
         westLocations.forEach((location) => (location.style.display = "block"));
         eastLocations.forEach((location) => (location.style.display = "block"));
         centralLocations.forEach((location) => (location.style.display = "block"));
-        outletDivider.style.display = "block";
       }
     });
+
 
     // Close the modal when clicking the close button
     closeModal.addEventListener("click", () => {
