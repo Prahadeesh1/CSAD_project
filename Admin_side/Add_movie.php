@@ -36,14 +36,16 @@
 
             <!-- Dropdown for Theaters -->
             <label class="dropdown-title">Add Theaters</label>
-            <select name="section" class="dropdown">
-                <option value="theatre1">Causeway Point</option>
-                <option value="theatre2">Ang Mo Kio</option>
-                <option value="theatre3">Sentosa cove</option>
-                <option value="theatre4">ION orchard</option>
-                
-
-            
+            <select name="theaters" class="dropdown">
+                <option value="" disabled selected hidden>Please Select Theaters</option>
+                <option value="Causeway Point - Hall A">Causeway Point - Hall A</option>
+                <option value="Causeway Point - Hall B">Causeway Point - Hall B</option>
+                <option value="AMK Hub - Hall A">AMK Hub - Hall A</option>
+                <option value="AMK Hub - Hall B">AMK Hub - Hall B</option>
+                <option value="Sentosa cove - Hall A">Sentosa cove - Hall A</option>
+                <option value="Sentosa cove - Hall B">Sentosa cove - Hall B</option>
+                <option value="ION orchard - Hall A">ION orchard - Hall A</option>
+                <option value="ION orchard - Hall B">ION orchard - Hall B</option>
             </select>
 
         </div>
@@ -54,7 +56,6 @@
 
         <!-- Movie Form -->
         <div class="movie-form">
-            <textarea name="id" placeholder="Enter movie ID" rows="2"></textarea>
             <textarea name="title" placeholder="Enter Movie Title" rows="1" required></textarea>
             <textarea name="cast" placeholder="Enter Cast" rows="2"></textarea>
             <textarea name="director" placeholder="Enter Director" rows="1"></textarea>

@@ -18,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $section = $_POST['section'];
     $theaters = $_POST['theaters'];
     $dates = $_POST['dates'];
-    $id = $_POST['id'];
 
     // image shit
     if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
@@ -32,10 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $query = "INSERT INTO movie_details (title, cast, director, rating, genre, language, subtitles, runtime, synopsis, section, theaters, dates, cover, cover_type,id)
-              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query1 = "INSERT INTO movie_details (title, cast, director, rating, genre, language, subtitles, runtime, synopsis, section, cover, cover_type)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $stmt = $conn->prepare($query);
+    $stmt = $conn->prepare($query1);
 
     if (!$stmt) {
         echo json_encode([
@@ -46,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->bind_param(
-        "sssssssssssssss",
+        "ssssssssssss",
 
         $title,
         $cast,
@@ -58,14 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $runtime,
         $synopsis,
         $section,
-        $theaters,
-        $dates,
         $imageData,
         $imageType,
-        $id
     );
 
     if ($stmt->execute()) {
+
+        $id = $stmt->insert_id; // get the id of the inserted movie
+
         echo json_encode([
             "success" => true,
             "message" => "Movie added successfully"
@@ -77,33 +76,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
     }
 
-    $stmt->close();
-    $conn->close();
+    $query2 = "INSERT INTO screenings (theater, id, show_time)
+              VALUES (?, ?, ?)";
+    $stmt2 = $conn->prepare($query2);
+    if (!$stmt2) {
+        echo json_encode([
+            "success" => false,
+            "message" => "Database error: " . $conn->error
+        ]);
+        exit;
+    }
+    $stmt2->bind_param(
+        "sis",
 
-    // fetch shit
-} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $query = "SELECT * FROM movie_details";
-    $result = $conn->query($query);
+        $theaters,
+        $id,
+        $dates,
+    );
 
-    if ($result && $result->num_rows > 0) {
-        $movies = [];
-        while ($row = $result->fetch_assoc()) {
-            if (!empty($row['cover'])) {
-                $row['cover'] = "data:" . $row['cover_type'] . ";base64," . base64_encode($row['cover']);
-            }
-            $movies[] = $row;
-        }
+    if ($stmt2->execute()) {
         echo json_encode([
             "success" => true,
-            "movies" => $movies
+            "message" => "Screenings added successfully"
         ]);
     } else {
         echo json_encode([
             "success" => false,
-            "message" => "No movies found"
+            "message" => "Failed to add movie: " . $stmt2->error
         ]);
     }
 
+    $stmt->close();
+    $stmt2->close();
+    $conn->close();
+
+    // fetch shit
+} elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    $query1 = "SELECT * FROM movie_details";
+    $result1 = $conn->query($query1);
+
+    $query2 = "SELECT * FROM screenings";
+    $result2 = $conn->query($query2);
+
+    $movies = [];
+    $screenings = [];
+
+    // Fetch movies if available
+    if ($result1 && $result1->num_rows > 0) {
+        while ($row1 = $result1->fetch_assoc()) {
+            if (!empty($row1['cover'])) {
+                $row1['cover'] = "data:" . $row1['cover_type'] . ";base64," . base64_encode($row1['cover']);
+            }
+            $movies[] = $row1;
+        }
+    }
+
+    // Fetch screenings if available
+    if ($result2 && $result2->num_rows > 0) {
+        while ($row2 = $result2->fetch_assoc()) {
+            $screenings[] = $row2;
+        }
+    }
+
+    // Send JSON response
+    echo json_encode([
+        "success" => true,
+        "movies" => $movies,       // Always return an array (even if empty)
+        "screenings" => $screenings // Always return an array (even if empty)
+    ]);
+
     $conn->close();
 }
+
 ?>
