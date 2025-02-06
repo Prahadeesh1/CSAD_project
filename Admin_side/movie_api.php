@@ -150,8 +150,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            JOIN theater t ON s.theater_id = t.theater_id";
     $result2 = $conn->query($query2);
 
+    $query3 = "SELECT t.* FROM tickets t
+                JOIN screenings s ON t.screening_id = s.screening_id";
+    $result3 = $conn->query($query3);
+
     $movies = [];
     $screenings = [];
+    $tickets = [];
 
     // Fetch movies if available
     if ($result1 && $result1->num_rows > 0) {
@@ -170,11 +175,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
+    if ($result3 && $result3->num_rows > 0) {
+        while ($row3 = $result3->fetch_assoc()) {
+            $tickets[] = $row3;
+        }
+    }
+
     // Send JSON response
     echo json_encode([
         "success" => true,
         "movies" => $movies,       // Always return an array (even if empty)
-        "screenings" => $screenings // Always return an array (even if empty)
+        "screenings" => $screenings, // Always return an array (even if empty)
+        "tickets" => $tickets // Always return an array (even if empty)
     ]);
 
     $conn->close();

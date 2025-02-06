@@ -78,17 +78,21 @@ try {
         $theater_id = $result->fetch_assoc()["theater_id"] ?? null;
         $stmt3->close();
 
+        if (!$theater_id) {
+            throw new Exception("Theater not found");
+        }
+
         // Retrieve Screening ID
-        $query4 = "SELECT id FROM screenings WHERE theater_id = ? AND id = ? AND show_time = ?";
+        $query4 = "SELECT screening_id FROM screenings WHERE theater_id = ? AND id = ? AND show_time = ?";
         $stmt4 = $conn->prepare($query4);
-        if (!$stmt3) {
+        if (!$stmt4) {
             throw new Exception("Database error: " . $conn->error);
         }
 
         $stmt4->bind_param("iis", $theater_id, $movie_id, $showtime);
         $stmt4->execute();
         $result = $stmt4->get_result();
-        $screening_id = $result->fetch_assoc()['id'] ?? null;
+        $screening_id = $result->fetch_assoc()['screening_id'] ?? null;
         $stmt4->close();
 
         if (!$screening_id) {
@@ -96,21 +100,69 @@ try {
         }
 
         // Insert Tickets
-        $stmt5 = $conn->prepare("INSERT INTO tickets (customer_id, screening_id, seat_number, cost, payment) VALUES (?, ?, ?, ?, 0)");
+        $stmt5 = $conn->prepare("INSERT INTO tickets (customer_id, screening_id, seat_number, cost) VALUES (?, ?, ?, ?)");
         if (!$stmt5) {
-            throw new Exception("Database error: " . $conn->error);
+            throw new Exception("Prepared statement error: " . $conn->error);
         }
 
         $stmt5->bind_param("iiss", $customer_id, $screening_id, $seats, $price);
-        $stmt5->execute();
-        $stmt5->close();
 
+        if (!$stmt5->execute()) {
+            throw new Exception("Error executing insert: " . $stmt5->error);
+        }
+
+        $ticket_id = $stmt5->insert_id;
+        $stmt5->close();
+        
         // **Commit Transaction** if all queries were successful
         $conn->commit();
-
-        echo json_encode(["success" => true, "payment_url" => $stripeUrls[$price]]);
+        $payment_url_with_ticket = $stripeUrls[$price] . "?ticket_id=" . $ticket_id . "&status=pending";
+        echo json_encode(["success" => true, "payment_url" => $payment_url_with_ticket]);
         exit;
+
+    } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+        $query = "SELECT 
+            ti.ticket_id, 
+            ti.seat_number, 
+            ti.cost, 
+            s.screening_id, 
+            s.theater_id, 
+            s.month, 
+            s.day, 
+            s.dayofWeek, 
+            s.time, 
+            m.id AS movie_id, 
+            m.title, 
+            m.cover, 
+            th.name AS theater_name 
+        FROM tickets ti
+        JOIN screenings s ON ti.screening_id = s.screening_id
+        JOIN movie_details m ON s.id = m.id
+        JOIN theater th ON s.theater_id = th.theater_id";
+
+        $result = $conn->query($query);
+    
+        $ticket = [];
+    
+        // Fetch movies if available
+        if ($result && $result->num_rows > 0) {
+            while ($row1 = $result->fetch_assoc()) {
+                $ticket[] = $row1;
+            }
+        }
+    
+        // Send JSON response
+        echo json_encode([
+            "success" => true,
+            "ticket" => $ticket,       // Always return an array (even if empty)
+        ]);
+    
+        $conn->close();
     }
+
+
+
 } catch (Exception $e) {
     // **Rollback Transaction** if any query fails
     $conn->rollback();
@@ -121,4 +173,5 @@ try {
     // Close the connection
     $conn->close();
 }
+
 ?>

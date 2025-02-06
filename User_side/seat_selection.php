@@ -1,8 +1,16 @@
 <?php
 $movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
+include 'db_connection.php';
+$conn = connect_db();
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id'], $_GET['screening_id'], $_GET['date'], $_GET['time'], $_GET['location'], $_GET['showtime'])) {
     $movieId = $_GET['id'];
+    $screening_id = $_GET['screening_id'];
+    $date = $_GET['date'];
+    $time = $_GET['time'];
+    $location = $_GET['location'];
+    $showtime = $_GET['showtime'];
+
     $apiUrl = "http://localhost/CSAD_project/Admin_side/movie_api.php";
     
     // Fetch the movies data from the API
@@ -11,7 +19,7 @@ if (isset($_GET['id'])) {
     if ($moviesData['success']) {
       // Search for the selected movie in the API response
       $selectedMovie = null;
-      $selectedMovieDate = null;
+      $selectedTicket = [];
   
       foreach ($moviesData['movies'] as $movie) {
           if ($movie['id'] == $movieId) {
@@ -19,29 +27,18 @@ if (isset($_GET['id'])) {
               break; // Movie found, exit loop early
           }
       }
-  
-      if (!$selectedMovie) {
-          echo "<p>Movie not found.</p>";
-          exit;
-      }
-  
-      // Search for screenings of the selected movie
-      foreach ($moviesData['screenings'] as $screening) {
-          if ($screening['id'] == $movieId) { // Ensure screening references the correct movie
-              $selectedMovieDate = $screening;
-          }
-      }
-      if (!$selectedMovieDate) {
-        echo "<p> No scheduled screenings available.</p>";
-        exit;
-    }
 
+      foreach ($moviesData['tickets'] as $ticket) {
+        if ($ticket['screening_id'] == $screening_id) {
+            $selectedTicket[] = $ticket; 
+        }
+      }
+      
   } else {
       echo "<p>Failed to fetch movie data.</p>";
       exit;
   }
 }
-  
 ?>
 
 <!DOCTYPE html>
@@ -59,10 +56,30 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
+<?php
+
+$occupiedSeats = [];
+
+foreach ($selectedTicket as $seats) {
+    $screening_id = $seats['screening_id']; 
+    $seatNumbers = explode(',', $seats['seat_number']); // Convert string into an array
+
+    if (!isset($occupiedSeats[$screening_id])) {
+        $occupiedSeats[$screening_id] = []; // Initialize array if it doesn't exist
+    }
+
+    // Merge seat numbers correctly
+    $occupiedSeats[$screening_id] = array_merge($occupiedSeats[$screening_id], $seatNumbers);
+  }
+?>
+
+
+
   <!-- Header Navigation -->
   <div class="navbar">
     <img src="images/logo.png" alt="Logo" />
     <nav>
+      <a href="main_page.php">Home</a>
       <a href="moviesection.php">Movies</a>
       <a href="cinemas.html">Cinemas</a>
       <a href="#">Experiences</a>
@@ -81,11 +98,12 @@ if (isset($_GET['id'])) {
         <h3 id="extra-details-h3"><?php echo htmlspecialchars($selectedMovie['title']); ?></h3>
       </div>
       <div class="extra-details">
-        <div>Date: <?php echo htmlspecialchars($selectedMovieDate['day']) . " " 
-        . htmlspecialchars($selectedMovieDate['month']). " " 
-        . htmlspecialchars($selectedMovieDate['dayofWeek']); ?></div>
-        <div>Time: <?php echo htmlspecialchars($selectedMovieDate['time']); ?></div>
-        <div>Theater: <?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?></div>
+      <?php foreach ($occupiedSeats as $screening_id => $seats) : ?>
+        <input type="hidden" name="occupied_seats[<?php echo $screening_id; ?>]" value="<?php echo implode(',', $seats); ?>">
+      <?php endforeach; ?>
+        <div>Date: <?php echo $date; ?></div>
+        <div>Time: <?php echo $time; ?></div>
+        <div>Theater: <?php echo $location; ?></div>
         <div id="selected">Seat Selected: </div>
       </div>
       <h3 id="ticket-price">Total Price: $<span id=total>0</span></h3>
@@ -367,15 +385,20 @@ if (isset($_GET['id'])) {
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+
+
+// Function to mark occupied seats on the seat map
+document.addEventListener("DOMContentLoaded", function () {
   const seats = document.querySelectorAll('.seat');
   const countElement = document.getElementById('count');
   const totalElement = document.getElementById('total');
   const confirmButton = document.getElementById('confirm-booking');
   const selectedSeatsDisplay = document.getElementById('selected');
-
   const pricePerSeat = 10; // Price per seat
+  const seatNumber = document.querySelector('input[type="hidden"]').value;
   let selectedSeats = [];
+
+
 
   // Function to update the count and total price
   function updatePrice() {
@@ -386,7 +409,9 @@ if (isset($_GET['id'])) {
 
   // Function to handle seat selection
   seats.forEach(seat => {
-    if (!seat.classList.contains('occupied')) {
+    if (seatNumber.includes(seat.getAttribute('value'))) {
+      seat.classList.add('occupied');
+    } else if (!seat.classList.contains('occupied')) {
       seat.addEventListener('click', function () {
         const seatValue = seat.getAttribute('value');
 
@@ -405,14 +430,18 @@ if (isset($_GET['id'])) {
 
   confirmButton.addEventListener('click', function () {
     const movieId = "<?php echo $selectedMovie['id']; ?>"; 
-    const seatsString = selectedSeats.join(',')
+    const seatsString = selectedSeats.join(',');
     const totalPrice = selectedSeats.length * pricePerSeat;
+    const selectedDate = "<?php echo $date; ?>";
+    const selectedTime = "<?php echo $time; ?>";
+    const selectedLocation = "<?php echo $location; ?>";
+    const showtime = "<?php echo $showtime; ?>";
 
     if (selectedSeats.length === 0) {
       alert("Please select at least one seat.");
       return;
     }
-    confirmButton.href = `customer.php?id=${movieId}&seats=${encodeURIComponent(seatsString)}&price=${totalPrice}`;
+    confirmButton.href = `customer.php?id=${movieId}&seats=${encodeURIComponent(seatsString)}&price=${totalPrice}&date=${selectedDate}&time=${selectedTime}&location=${selectedLocation}&showtime=${showtime}`;
   });
 });
   </script>

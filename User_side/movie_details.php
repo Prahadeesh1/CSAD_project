@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
       // Search for the selected movie in the API response
       $selectedMovie = null;
       $selectedMovieDate = [];
-      $selectedMovietheater = null;
+    
   
       foreach ($moviesData['movies'] as $movie) {
           if ($movie['id'] == $movieId) {
@@ -41,6 +41,17 @@ if (isset($_GET['id'])) {
       exit;
   }
 }
+
+$title = htmlspecialchars($selectedMovie['title']);
+$cover = htmlspecialchars($selectedMovie['cover']);
+$cast = htmlspecialchars($selectedMovie['cast']);
+$director = htmlspecialchars($selectedMovie['director']);
+$synopsis = htmlspecialchars($selectedMovie['synopsis']);
+$genre = htmlspecialchars($selectedMovie['genre']);
+$language = htmlspecialchars($selectedMovie['language']);
+$rating = htmlspecialchars($selectedMovie['rating']);
+$runtime = htmlspecialchars($selectedMovie['runtime']);
+$subtitles = htmlspecialchars($selectedMovie['subtitles']);
   
 ?>
 
@@ -49,7 +60,7 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo htmlspecialchars($selectedMovie['title']); ?> - Movie Details</title>
+    <title><?php echo $title ?> - Movie Details</title>
     <link rel="stylesheet" href="CSS/moviedetails.css" />
 </head>
 <body>
@@ -68,20 +79,20 @@ if (isset($_GET['id'])) {
     <main class="movie-details">
         <div class="details-container">
             <div class="poster-container">
-                <img src="<?php echo htmlspecialchars($selectedMovie['cover']); ?>" alt="Movie Poster" />
+                <img src="<?php echo $cover ?>" alt="Movie Poster" />
             </div>
             <div class="info-container">
-                <h1 class="movie-title"><?php echo htmlspecialchars($selectedMovie['title']); ?></h1>
+                <h1 class="movie-title"><?php echo $title ?></h1>
                 <h2>Movie Details</h2>
-                <p><strong>Cast: </strong><?php echo htmlspecialchars($selectedMovie['cast']); ?></p>
-                <p><strong>Director: </strong><?php echo htmlspecialchars($selectedMovie['director']); ?></p>
-                <p><strong>Synopsis: </strong><?php echo htmlspecialchars($selectedMovie['synopsis']); ?></p>
+                <p><strong>Cast: </strong><?php echo $cast ?></p>
+                <p><strong>Director: </strong><?php echo $director ?></p>
+                <p><strong>Synopsis: </strong><?php echo $synopsis ?></p>
                 <div class="extra-details">
-                    <div><strong>Genre:</strong> <?php echo htmlspecialchars($selectedMovie['genre']); ?></div>
-                    <div><strong>Language:</strong> <?php echo htmlspecialchars($selectedMovie['language']); ?></div>
-                    <div><strong>Rating:</strong> <?php echo htmlspecialchars($selectedMovie['rating']); ?></div>
-                    <div><strong>Runtime:</strong> <?php echo htmlspecialchars($selectedMovie['runtime']); ?> mins</div>
-                    <div><strong>Subtitle:</strong> <?php echo htmlspecialchars($selectedMovie['subtitles']); ?></div>
+                    <div><strong>Genre:</strong> <?php echo $genre ?></div>
+                    <div><strong>Language:</strong> <?php echo $language ?></div>
+                    <div><strong>Rating:</strong> <?php echo $rating ?></div>
+                    <div><strong>Runtime:</strong> <?php echo $runtime ?> mins</div>
+                    <div><strong>Subtitle:</strong> <?php echo $subtitles?></div>
                 </div>
             </div>
         </div>
@@ -101,7 +112,9 @@ if (isset($_GET['id'])) {
   
     foreach ($uniqueDates as $date) : 
   ?>
-    <button class="date-button date-option" type="button">
+    <!-- Add show_time as a data attribute -->
+    <button class="date-button date-option" type="button" 
+            data-show-time="<?php echo htmlspecialchars($date['show_time']); ?>">
         <p class="date"><?php echo htmlspecialchars($date['dayofWeek']); ?></p>
         <h2><?php echo htmlspecialchars($date['day']); ?></h2>
         <p class="date"><?php echo htmlspecialchars($date['month']); ?></p>
@@ -116,50 +129,60 @@ if (isset($_GET['id'])) {
         <h3 class="time-title">Select Cinema & Time</h3>
     </div>
 
-    <?php 
-    // Step 1: Group screenings by date and theater_name
-    $groupedScreenings = [];
-    foreach ($selectedMovieDate as $screening) {
-        $dateKey = $screening['dayofWeek'] . $screening['day'] . $screening['month']; // Unique date key
-        $theater = $screening['theater_name'];
-        $time = $screening['time'];
+          <?php 
+      // Step 1: Group screenings by date and theater_name
+      $groupedScreenings = [];
+      foreach ($selectedMovieDate as $screening) {
+          $dateKey = $screening['dayofWeek'] . $screening['day'] . $screening['month']; // Unique date key
+          $theater = $screening['theater_name'];
+          $time = $screening['time'];
+          $screening_id = $screening['screening_id'];
 
-        if (!isset($groupedScreenings[$dateKey])) {
-            $groupedScreenings[$dateKey] = [];
-        }
-        if (!isset($groupedScreenings[$dateKey][$theater])) {
-            $groupedScreenings[$dateKey][$theater] = [];
-        }
-        $groupedScreenings[$dateKey][$theater][] = $time;
-    }
+          if (!isset($groupedScreenings[$dateKey])) {
+              $groupedScreenings[$dateKey] = [];
+          }
+          if (!isset($groupedScreenings[$dateKey][$theater])) {
+              $groupedScreenings[$dateKey][$theater] = [];
+          }
 
-    // Step 2: Display theaters & times but keep them hidden initially
-    foreach ($groupedScreenings as $dateKey => $theaters) : ?>
-        <div class="cinema-container" data-date="<?php echo htmlspecialchars($dateKey); ?>" style="display: none;">
-            <?php foreach ($theaters as $theater => $times) : ?>
-                <h3 class="location-title"><?php echo htmlspecialchars($theater); ?></h3>
-                <div class="div-time">
-                    <?php foreach ($times as $time) : ?>
-                        <button class="time-button time-option" data-location="<?php echo htmlspecialchars($theater); ?>" type="button">
-                            <p><?php echo htmlspecialchars($time); ?></p>
-                        </button>
-                    <?php endforeach; ?>
-                </div>
-                <hr class="location-divider" />
-            <?php endforeach; ?>
-        </div>
-    <?php endforeach; ?>
-</div>
+          // Store both time and screening_id together
+          $groupedScreenings[$dateKey][$theater][] = [
+              'time' => $time,
+              'screening_id' => $screening_id
+          ];
+      }
+
+      // Step 2: Display theaters & times but keep them hidden initially
+      foreach ($groupedScreenings as $dateKey => $theaters) : ?>
+          <div class="cinema-container" data-date="<?php echo htmlspecialchars($dateKey); ?>" style="display: none;">
+              <?php foreach ($theaters as $theater => $screenings) : ?>
+                  <h3 class="location-title"><?php echo htmlspecialchars($theater); ?></h3>
+                  <div class="div-time">
+                      <?php foreach ($screenings as $screening) : ?>
+                          <button class="time-button time-option" 
+                                  data-location="<?php echo htmlspecialchars($theater); ?>" 
+                                  data-screening-id="<?php echo htmlspecialchars($screening['screening_id']); ?>" 
+                                  type="button">
+                              <p><?php echo htmlspecialchars($screening['time']); ?></p>
+                          </button>
+                      <?php endforeach; ?>
+                  </div>
+                  <hr class="location-divider" />
+              <?php endforeach; ?>
+          </div>
+      <?php endforeach; ?>
+    </div>
+
 
 
 
   <div id="popup-modal" class="modal">
     <div class="modal-content">
-      <img id="modal-poster" src="<?php echo htmlspecialchars($selectedMovie['cover']); ?>">
-      <p><b><?php echo htmlspecialchars($selectedMovie['title']); ?></b><br></p>
+      <img id="modal-poster" src="<?php echo $cover ?>">
+      <p><b><?php echo $title ?></b><br></p>
       <span id="close-modal" class="close">&times;</span>
       <p id="modal-message"></p><br>
-      <a href="seat_selection.php?id=<?php echo $movie['id']; ?>">
+      <a href="#" id="confirm-button">
         <button id="modal-button">Seat Selection</button>
       </a>
     </div>
@@ -225,6 +248,7 @@ if (isset($_GET['id'])) {
     const modal = document.getElementById("popup-modal");
     const modalMessage = document.getElementById("modal-message");
     const closeModal = document.getElementById("close-modal");
+    const confirmButton = document.getElementById("confirm-button");
     const locationTitles = document.querySelectorAll("[data-location-id]");
 
     // Date selection functionality
@@ -234,7 +258,6 @@ if (isset($_GET['id'])) {
         const day = button.querySelector("p.date").innerText; // e.g., "FRI"
         const dayNumber = button.querySelector("h2").innerText; // e.g., "10"
         const month = button.querySelector("p.date:last-of-type").innerText; // e.g., "JAN"
-
         // Use formatDate function to get the complete date
         selectedDate = formatDate(new Date(`${month} ${dayNumber}, 2025`));
 
@@ -320,7 +343,21 @@ if (isset($_GET['id'])) {
                 }
             });
         });
-    });
+        confirmButton.addEventListener('click', function () {
+    // Ensure all required values are set
+    if (selectedDate && selectedTime && selectedLocation) {
+        // Get the movie ID from PHP and build the URL with query parameters
+        const movieId = "<?php echo $selectedMovie['id']; ?>";
+        const screeningId = document.querySelector(".time-button.selected")?.getAttribute("data-screening-id");
+        const showtime = document.querySelector(".date-button.selected")?.getAttribute("data-show-time");
+
+        // Construct the URL for seat selection
+        confirmButton.href = `seat_selection.php?id=${movieId}&screening_id=${screeningId}&date=${selectedDate}&time=${selectedTime}&location=${selectedLocation}&showtime=${showtime}`;
+    } else {
+        alert("Please select a date, time, and location before proceeding.");
+    }
+  });
+});
 
   </script>
 

@@ -1,10 +1,15 @@
 <?php
 $movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
 
-if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
+if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['time'], $_GET['location'], $_GET['showtime'])) {
     $movieId = $_GET['id'];
     $seats = explode(',', $_GET['seats']);
     $totalPrice = $_GET['price'];
+    $date = $_GET['date'];
+    $time = $_GET['time'];
+    $location = $_GET['location'];
+    $showtime = $_GET['showtime'];
+
 
     $apiUrl = "http://localhost/CSAD_project/Admin_side/movie_api.php";
     
@@ -14,7 +19,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
     if ($moviesData['success']) {
       // Search for the selected movie in the API response
       $selectedMovie = null;
-      $selectedMovieDate = null;
+      $selectedMovieDate = [];
   
       foreach ($moviesData['movies'] as $movie) {
           if ($movie['id'] == $movieId) {
@@ -31,7 +36,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
       // Search for screenings of the selected movie
       foreach ($moviesData['screenings'] as $screening) {
           if ($screening['id'] == $movieId) { // Ensure screening references the correct movie
-              $selectedMovieDate = $screening;
+              $selectedMovieDate[] = $screening;
           }
       }
       if (!$selectedMovieDate) {
@@ -58,6 +63,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="../User_side/CSS/customer.css" />
+  <link rel="stylesheet" href="../User_side/CSS/seat_selection.css"/>
 </head>
 
 <body>
@@ -85,11 +91,9 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
           <h3 id="extra-details-h3"><?php echo htmlspecialchars($selectedMovie['title']); ?></h3>
         </div>
         <div class="extra-details">
-          <div>Date: <?php echo htmlspecialchars($selectedMovieDate['day']) . " " 
-        . htmlspecialchars($selectedMovieDate['month']). " " 
-        . htmlspecialchars($selectedMovieDate['dayofWeek']); ?></div>
-          <div>Time: <?php echo htmlspecialchars($selectedMovieDate['time']); ?></div>
-          <div>Theater: <?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?></div>
+          <div>Date: <?php echo $date; ?></div>
+          <div>Time: <?php echo $time; ?></div>
+          <div>Theater: <?php echo $location; ?></div>
           <div>Seat Selected: <?php echo  htmlspecialchars(implode(', ', $seats)); ?></div>
         </div>
         <h3 id="ticket-price">Total Price: $<?php echo $totalPrice; ?></h3>
@@ -97,9 +101,9 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
         <div class="customer-form">
           <form id="customer-details">
             <input type="hidden" name="movie" value="<?php echo htmlspecialchars($selectedMovie['title']); ?>">
-            <input type="hidden" name="theater" value="<?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?>">
+            <input type="hidden" name="theater" value="<?php echo $location; ?>">
             <input type="hidden" name="seats" value="<?php echo htmlspecialchars(implode(',', $seats)); ?>">
-            <input type="hidden" name="showtime" value="<?php echo htmlspecialchars($selectedMovieDate['show_time']);?>">
+            <input type="hidden" name="showtime" value="<?php echo $showtime?>">
             <input type="hidden" name="price" value="<?php echo $totalPrice; ?>">
 
             <div class="mb-3">
@@ -124,7 +128,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
 
 
             <div class="d-flex justify-content-center">
-              <a href="seat_selection.php"><button type="button" id="button-return" class="btn btn-primary">Return to Seat Selection</button></a>
+              <a href="seat_selection.php?id= <?php echo $movie['id']; ?>"><button type="button" id="button-return" class="btn btn-primary">Return to Seat Selection</button></a>
               <button type="button" id="button-payment" class="btn btn-primary">Payment</button>
               </a>
           </form>
