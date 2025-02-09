@@ -45,19 +45,20 @@
     </nav>
   </div>
 
-    <div class="row align-item-start" >
-      <div class="col-md-8" style="align-items: center">
-            <h1>Movie Booking Confirmation</h1>
-            <p>Thank you for booking your movie tickets with us!</p>
-        <h2>Movie Booking will be sent via Email</h2>
-        <div class="col-md-4 poster-container">
-            <div class="qr-code">
-                <img src="images/websiteQRCode_noFrame.jpg" alt="QR Code" />
-                <p>Scan this QR code at the entrance</p>
-            </div>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="row text-center">
+      <h1>Movie Booking Confirmation</h1>
+      <p>Thank you for booking your movie tickets with us!</p>
+      <h2>Movie Booking will be sent via Email</h2>
+      <div class="col-md-4 poster-container">
+        <div class="qr-code">
+          <img src="images/websiteQRCode_noFrame.jpg" alt="QR Code" />
+          <p>Scan this QR code at the entrance</p>
         </div>
       </div>
     </div>
+  </div>
+
 
   <!-- Footer Section -->
   <footer>
