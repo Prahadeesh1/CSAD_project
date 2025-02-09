@@ -1,50 +1,3 @@
-<?php
-$movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_side/movie_api.php"), true);
-
-if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
-    $movieId = $_GET['id'];
-    $seats = explode(',', $_GET['seats']);
-    $totalPrice = $_GET['price'];
-
-    $apiUrl = "http://localhost/CSAD_project/Admin_side/movie_api.php";
-    
-    // Fetch the movies data from the API
-    $moviesData = json_decode(file_get_contents($apiUrl), true);
-
-    if ($moviesData['success']) {
-      // Search for the selected movie in the API response
-      $selectedMovie = null;
-      $selectedMovieDate = null;
-  
-      foreach ($moviesData['movies'] as $movie) {
-          if ($movie['id'] == $movieId) {
-              $selectedMovie = $movie;
-              break; // Movie found, exit loop early
-          }
-      }
-  
-      if (!$selectedMovie) {
-          echo "<p>Movie not found.</p>";
-          exit;
-      }
-  
-      // Search for screenings of the selected movie
-      foreach ($moviesData['screenings'] as $screening) {
-          if ($screening['id'] == $movieId) { // Ensure screening references the correct movie
-              $selectedMovieDate = $screening;
-          }
-      }
-      if (!$selectedMovieDate) {
-        echo "<p> No scheduled screenings available.</p>";
-        exit;
-    }
-
-  } else {
-      echo "<p>Failed to fetch movie data.</p>";
-      exit;
-  }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,28 +44,10 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'])) {
       <a href="#">Events Booking</a>
     </nav>
   </div>
-
-  <main class="chosen_moviedetails">
-    <div class="row align-item-start">
-      <div class="col-md-4 poster-container">
-        <img src="<?php echo htmlspecialchars($selectedMovie['cover']); ?>" alt="Poster" />
-      </div>
-
       <div class="col-md-8">
             <h1>Movie Booking Confirmation</h1>
             <p>Thank you for booking your movie tickets with us!</p>
         <h2>Movie Booking E-Receipt</h2>
-        <div class="details">
-            <p><strong>Movie:</strong> <?php echo htmlspecialchars($selectedMovie['title']); ?></p>
-            <p><strong>Theater:</strong> <?php echo htmlspecialchars($selectedMovieDate['theater_name']); ?></p>
-            <p><strong>Showtime:</strong> 
-              <?php echo htmlspecialchars($selectedMovieDate['day']) . " " 
-              . htmlspecialchars($selectedMovieDate['month']). " " 
-              . htmlspecialchars($selectedMovieDate['dayofWeek']); ?>
-            </p>
-            <p><strong>Seats:</strong> <?php echo  htmlspecialchars(implode(', ', $seats)); ?></p>
-            <p><strong>Price:</strong><?php echo $totalPrice; ?></p>
-        </div>
         <div class="col-md-4 poster-container">
             <div class="qr-code">
                 <img src="images/websiteQRCode_noFrame.jpg" alt="QR Code" />
