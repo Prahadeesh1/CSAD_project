@@ -85,7 +85,7 @@
                   echo "<div class='movie-info'>";
                   echo "<h2>" . htmlspecialchars($movie['title']) . "</h2>";
                   echo "<p>Rating: " . htmlspecialchars($movie['rating']) . "</p>";
-                  echo "<p>Runtime: " . htmlspecialchars($movie['runtime']) . " mins</p>";
+                  echo "<p>Runtime:" . htmlspecialchars($movie['runtime']) . " mins</p>";
                   echo "<p>Genre: " . htmlspecialchars($movie['genre']) . "</p>";
                   echo "<a href='movie_details.php?id=" . urlencode($movie['id']) . "' class='button'>Book Now</a>";
                   echo "</div>";

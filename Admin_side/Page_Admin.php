@@ -26,9 +26,9 @@
         <button onclick="document.location='Edit_movies.php'">Edit Movie</button>
         <button onclick="document.location='Delete_movie.php'">Delete Movie</button>
         <button onclick="document.location='Customer_details.html'">Customer Details</button>
-        <button onclick="document.location='register.php'">Register Admin</button>
         <button onclick="document.location='Login_admin.php'">Log Out</button>
     </div>
 </div>
 </body>
 </html>
+

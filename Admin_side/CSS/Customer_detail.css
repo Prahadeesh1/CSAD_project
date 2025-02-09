@@ -1,0 +1,213 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, black, rgb(116, 102, 102));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Section */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #8b0000;
+    color: white;
+    padding: 0;
+    height: 80px;
+    width: 100%;
+    position: relative;
+}
+
+/* Logo Styling */
+.navbar img {
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    object-fit: contain;
+}
+
+/* Navigation Links */
+.navbar nav {
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    padding-right: 20px;
+}
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    flex: 1;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Back Button Styling */
+.back-button {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    background-color: white;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.back-button:hover {
+    background-color: #bb0101;
+}
+
+/* Headline Title */
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.5rem;
+    color: white;
+}
+
+/* Filter Form */
+form {
+    margin: 20px 0;
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+form select,
+form input[type="text"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form input[type="submit"]:hover {
+    background-color: #bb0101;
+}
+
+/* Customer Table Styling */
+.customer-table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+    color: black;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden; /* Prevent content overflow rounded corners */
+    margin-bottom: 20px;
+}
+.customer-table thead {
+    background-color: #8b0000;
+    color: white;
+}
+.customer-table th,
+.customer-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.customer-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+.customer-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Buttons Styling */
+.edit-btn,
+.delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+.edit-btn:hover {
+    background-color: #45a049;
+}
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+.delete-btn:hover {
+    background-color: #e53935;
+}
+/* Popup Modal */
+.popup-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+.popup-content h2 {
+    color: #bb0101;
+}
+.popup-content p {
+    margin: 15px 0;
+}
+.popup-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.popup-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.popup-back {
+    background-color: gray;
+    color: white;
+}
+.popup-back:hover {
+    background-color: darkgray;
+}
+.popup-delete {
+    background-color: #bb0101;
+    color: white;
+}
+.popup-delete:hover {
+    background-color: red;
+}
