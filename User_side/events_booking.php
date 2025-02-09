@@ -94,6 +94,57 @@
       </form>
     </div>
 
+    <footer>
+      <div class="footer-links">
+        <div class="footer-column">
+          <h3>HOME</h3>
+          <ul>
+            <li><a href="#">Log In/Register</a></li>
+            <li>
+              <a href="../Admin_side/Login_Admin.html">Admin Page</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>LEGAL</h3>
+          <ul>
+            <li><a href="termsandconditions.html">Terms & Conditions</a></li>
+            <li><a href="privacypolicy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>CUSTOMER SERVICES</h3>
+          <ul>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="faqs.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>ABOUT</h3>
+          <ul>
+            <li><a href="aboutpvc.html">About PVC</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Follow Us Section -->
+      <div class="footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/" class="social-icon facebook" target="_blank">
+            <img src="images/facebook.jpg" alt="Facebook" class="social-img" />
+          </a>
+          <a href="https://x.com/?lang=en" class="social-icon X" target="_blank">
+            <img src="images/x.jpg" alt="X" class="social-img" />
+          </a>
+          <a href="https://www.instagram.com/" class="social-icon instagram" target="_blank">
+            <img src="images/instagram.jpg" alt="Instagram" class="social-img" />
+          </a>
+        </div>
+      </div>
+      <p>&copy; 2024 PrismVerse Cinematics Pte Ltd. All rights reserved.</p>
+    </footer>
+
     <script>
       const typeOfEventSelected = document.getElementById("booking-category");
       const otherEventContainer = document.getElementById("other-event-container");
