@@ -39,15 +39,16 @@
       <a href="main_page.php">Home</a>
       <a href="moviesection.php">Movies</a>
       <a href="cinemas.html">Cinemas</a>
-      <a href="#">Experiences</a>
-      <a href="#">Shop</a>
+      <a href="experiences.html">Experiences</a>
       <a href="#">Events Booking</a>
     </nav>
   </div>
-      <div class="col-md-8">
+
+    <div class="row align-item-start" >
+      <div class="col-md-8" style="align-items: center">
             <h1>Movie Booking Confirmation</h1>
             <p>Thank you for booking your movie tickets with us!</p>
-        <h2>Movie Booking E-Receipt</h2>
+        <h2>Movie Booking will be sent via Email</h2>
         <div class="col-md-4 poster-container">
             <div class="qr-code">
                 <img src="images/websiteQRCode_noFrame.jpg" alt="QR Code" />
@@ -56,7 +57,6 @@
         </div>
       </div>
     </div>
-  </main>
 
   <!-- Footer Section -->
   <footer>

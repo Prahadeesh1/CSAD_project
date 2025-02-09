@@ -79,7 +79,6 @@ foreach ($selectedTicket as $seats) {
   <div class="navbar">
     <img src="images/logo.png" alt="Logo" />
     <nav>
-    <img src="images/logo.png" alt="Logo" />
         <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
         <a href="cinemas.html">Cinemas</a>
