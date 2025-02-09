@@ -128,7 +128,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
 
 
             <div class="d-flex justify-content-center">
-              <a href="seat_selection.php?id= <?php echo $movie['id']; ?>"><button type="button" id="button-return" class="btn btn-primary">Return to Seat Selection</button></a>
+              <button type="button" id="button-return" class="btn btn-primary">Return to Seat Selection</button></a>
               <button type="button" id="button-payment" class="btn btn-primary">Payment</button>
               </a>
           </form>
@@ -204,6 +204,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
   <script>
     document.addEventListener("DOMContentLoaded", function () {
     const buttonPayment = document.getElementById("button-payment");
+    const buttonReturn = document.getElementById("button-return");
 
     buttonPayment.addEventListener("click", function () {
         const form = document.getElementById("customer-details");
@@ -227,6 +228,11 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
             alert("An unexpected error occurred.");
         });
     });
+
+    buttonReturn.addEventListener("click", function () {
+        window.history.back();
+    });
+
   });
   </script>
   </body>
