@@ -71,11 +71,12 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
   <div class="navbar">
     <img src="images/logo.png" alt="Logo" />
     <nav>
-        <a href="main_page.php">Home</a>
+    <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
         <a href="cinemas.html">Cinemas</a>
         <a href="experiences.html">Experiences</a>
-        <a href="#">Events Booking</a>
+        <a href="events_booking.php">Events Booking</a>
+      </nav>
     </nav>
   </div>
 
@@ -99,7 +100,7 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
         <h3 id="ticket-price">Total Price: $<?php echo $totalPrice; ?></h3>
 
         <div class="customer-form">
-          <form id="customer-details">
+          <form id="customer-details" onsubmit="return validateInputs()">
             <input type="hidden" name="movie" value="<?php echo htmlspecialchars($selectedMovie['title']); ?>">
             <input type="hidden" name="theater" value="<?php echo $location; ?>">
             <input type="hidden" name="seats" value="<?php echo htmlspecialchars(implode(',', $seats)); ?>">
@@ -205,6 +206,50 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
     document.addEventListener("DOMContentLoaded", function () {
     const buttonPayment = document.getElementById("button-payment");
     const buttonReturn = document.getElementById("button-return");
+
+    function validateInputs(){
+      var fname = document.forms["customer-details"]["fname"].value;
+      var lname = document.forms["customer-details"]["lname"].value;
+      var number = document.forms["customer-details"]["number"].value;
+      var email = document.forms["customer-details"]["email"].value;
+
+      if((fname.value).trim() === ""){
+        windoiw.alert("First Name must be filled out");
+        fname.focus();
+        return false;
+      }
+
+      if((lname.value).trim() === ""){
+        window.alert("Last Name must be filled out");
+        lname.focus();
+        return false;
+      }
+
+      if((number.value).trim() === ""){
+        window.alert("Contact Number must be filled out");
+        number.focus();
+        return false;
+      }
+
+      if((email.value).trim() === ""){
+        window.alert("Email Address must be filled out");
+        email.focus();
+        return false;
+      } else {
+        var regax = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(!regex.test(email.value)){
+          alert("Invalid Email Address");
+          return false;
+        }
+      }
+      var fnameValue = (fname.value).trim();
+      var lnameValue = (lname.value).trim();
+      var numberValue = (number.value).trim();
+      var emailValue = (email.value).trim();
+      var message = "First Name: " + fnameValue + "\n" + "Last Name: " + lnameValue + "\n" + "Contact Number: " + numberValue + "\n" + "Email Address: " + emailValue;
+      window.alert(message);
+      return true;
+    }
 
     buttonPayment.addEventListener("click", function () {
         const form = document.getElementById("customer-details");
