@@ -71,8 +71,8 @@
         <select class="form-select" name="booking-location" required>
           <option value="" selected>Select the location</option>
           <option value="Causeway Point">Causeway Point</option>
-          <option value="JEM">JEM</option>
-          <option value="Tampines 1">Tampines 1</option>
+          <option value="Sentosa Cove">Sentosa Cove</option>
+          <option value="Tampines 1">AMK Hub</option>
           <option value="ION Orchard">ION Orchard</option>
         </select>
 
