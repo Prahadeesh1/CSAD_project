@@ -62,14 +62,17 @@ $occupiedSeats = [];
 
 foreach ($selectedTicket as $seats) {
     $screening_id = $seats['screening_id']; 
-    $seatNumbers = explode(',', $seats['seat_number']); // Convert string into an array
+    $seatNumbers = isset($seats['seat_number']) ? explode(',', $seats['seat_number']) : [];
 
     if (!isset($occupiedSeats[$screening_id])) {
         $occupiedSeats[$screening_id] = []; // Initialize array if it doesn't exist
     }
 
     // Merge seat numbers correctly
-    $occupiedSeats[$screening_id] = array_merge($occupiedSeats[$screening_id], $seatNumbers);
+    if (!empty($seatNumbers)) {
+      $occupiedSeats[$screening_id] = array_merge($occupiedSeats[$screening_id], $seatNumbers);
+  }
+  
   }
 ?>
 
@@ -395,9 +398,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmButton = document.getElementById('confirm-booking');
   const selectedSeatsDisplay = document.getElementById('selected');
   const pricePerSeat = 10; // Price per seat
-  const seatNumber = document.querySelector('input[type="hidden"]').value;
+  const seatNumberInput = document.querySelector('input[type="hidden"]');
+  const seatNumber = seatNumberInput ? seatNumberInput.value : '';
   let selectedSeats = [];
-
 
 
   // Function to update the count and total price
@@ -409,24 +412,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to handle seat selection
   seats.forEach(seat => {
-    if (seatNumber.includes(seat.getAttribute('value'))) {
-      seat.classList.add('occupied');
-    } else if (!seat.classList.contains('occupied')) {
-      seat.addEventListener('click', function () {
-        const seatValue = seat.getAttribute('value');
-
-        if (seat.classList.contains('selected')) {
-          seat.classList.remove('selected');
-          const index = selectedSeats.indexOf(seat);
-          selectedSeats = selectedSeats.filter(s => s !== seatValue);
-        } else {
-          seat.classList.add('selected');
-          selectedSeats.push(seatValue);
-        }
-        updatePrice();
-      });
+    if (seatNumber && seatNumber.includes(seat.getAttribute('value'))) {
+        seat.classList.add('occupied');
+    } else {
+        seat.addEventListener('click', function () {
+            if (!this.classList.contains('occupied')) {
+                this.classList.toggle('selected');
+                const seatValue = this.getAttribute('value');
+                if (selectedSeats.includes(seatValue)) {
+                    selectedSeats = selectedSeats.filter(s => s !== seatValue);
+                } else {
+                    selectedSeats.push(seatValue);
+                }
+                updatePrice();
+            }
+        });
     }
-  });
+});
 
   confirmButton.addEventListener('click', function () {
     const movieId = "<?php echo $selectedMovie['id']; ?>"; 
