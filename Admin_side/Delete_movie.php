@@ -16,12 +16,11 @@ $movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_sid
     <div class="navbar">
         <img src="static_image/logo.png" alt="Logo">
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Cinemas</a>
-            <a href="#">Experiences</a>
-            <a href="#">Shop</a>
-            <a href="#">Events Booking</a>
+        <a href="../User_side/main_page.php">Home</a>
+        <a href="../User_side/moviesection.php">Movies</a>
+        <a href="../User_side/cinemas.html">Cinemas</a>
+        <a href="../User_side/experiences.html">Experiences</a>
+        <a href="../User_side/events_booking.php">Events Booking</a>
         </nav>
     </div>
 
@@ -86,7 +85,7 @@ $movies = json_decode(file_get_contents("http://localhost/CSAD_project/Admin_sid
             });
             
             if (movieIds.length > 0) {
-                // Show loading alert while deleting
+                // Show alert while deleting
                 alert("Deleting movies... Please wait!");
 
                 fetch('Delete_api.php', {

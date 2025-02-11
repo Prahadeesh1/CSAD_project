@@ -11,7 +11,7 @@
 <body>
 
 <!-- Back Button -->
-<button class="back-button" onclick="document.location='Movie_Sections.html'">Back to Sections</button>
+<button class="back-button" onclick="document.location='Page_Admin.php'">Back to Sections</button>
 
 <!-- Headline -->
 <h1>Add Movies</h1>

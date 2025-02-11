@@ -1,5 +1,5 @@
 <?php
-include 'db_connection.php'; // Include database connection
+include 'db_connection.php'; 
 $conn = connect_db();
 $sql = "SELECT 
     t.ticket_id AS ID, 
@@ -7,15 +7,14 @@ $sql = "SELECT
     m.title AS Movie, 
     t.seat_number AS Seats 
 FROM tickets t
-INNER JOIN screenings s ON t.screening_id = s.screening_id  -- Connect tickets to screenings
-INNER JOIN movie_details m ON s.id = m.id;  -- Connect screenings to movie_details
-  -- Ensuring tickets link to movie_details correctly
- -- Use `id` instead of `title`
+INNER JOIN screenings s ON t.screening_id = s.screening_id  -- tickets to screenings
+INNER JOIN movie_details m ON s.id = m.id;  --  screenings to movie_details
+  
 "; 
 
 $result = $conn->query($sql);
 
-// Debugging: Check if query execution failed
+//check if query execution failed
 if (!$result) {
     die("Query failed: " . $conn->error);
 }
@@ -34,12 +33,11 @@ if (!$result) {
 <div class="navbar">
         <img src="static_image/logo.png" alt="Logo">
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">Cinemas</a>
-            <a href="#">Experiences</a>
-            <a href="#">Shop</a>
-            <a href="#">Events Booking</a>
+        <a href="../User_side/main_page.php">Home</a>
+        <a href="../User_side/moviesection.php">Movies</a>
+        <a href="../User_side/cinemas.html">Cinemas</a>
+        <a href="../User_side/experiences.html">Experiences</a>
+        <a href="../User_side/events_booking.php">Events Booking</a>
         </nav>
     </div>
 
@@ -47,7 +45,7 @@ if (!$result) {
     <h1>Movie Booking Details</h1>
 
     <!-- Back Button -->
-    <button class="back-button" onclick="document.location='Customer_details.html'">Back to Customers</button>
+    <button class="back-button" onclick="document.location='Page_Admin.php'">Back to Customers</button>
 
 <table class="customer-table">
     <thead>

@@ -70,9 +70,9 @@ $subtitles = htmlspecialchars($selectedMovie['subtitles']);
         <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
         <a href="cinemas.html">Cinemas</a>
-        <a href="#">Experiences</a>
-        <a href="#">Shop</a>
-        <a href="#">Events Booking</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="events_booking.php">Events Booking</a>
+      </nav>
     </div>
 
     <!-- Movie Details Section -->

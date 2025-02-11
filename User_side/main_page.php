@@ -14,9 +14,8 @@
         <a href="main_page.php">Home</a>
         <a href="moviesection.php">Movies</a>
         <a href="cinemas.html">Cinemas</a>
-        <a href="#">Experiences</a>
-        <a href="#">Shop</a>
-        <a href="#">Events Booking</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="events_booking.php">Events Booking</a>
       </nav>
     </div>
 
@@ -24,9 +23,9 @@
     <section class="container">
       <div class="slider-wrapper">
         <div class="slider" id="slider">
-          <img id="slide-1" src="images/transformers.jpg" alt="Transformers" />
-          <img id="slide-2" src="images/fast x.jpg" alt="Fast X" />
-          <img id="slide-3" src="images/kraven.jpg" alt="Kraven" />
+          <img id="slide-1" src="images/nomorebets.jpg" alt="nomorebets" />
+          <img id="slide-2" src="images/Red 2.jpg" alt="Red 2" />
+          <img id="slide-3" src="images/M7.jpg" alt="M7" />
         </div>
         <div class="slider-nav">
           <a href="#slide-1" data-index="0"></a>
@@ -68,13 +67,6 @@
   
     </script>
 
-    <!-- Second Navigation Bar -->
-    <div class="sub-nav">
-      <a href="#">Now Showing</a>
-      <a href="#">Advanced Sales</a>
-      <a href="#">Coming Soon</a>
-    </div>
-
     <!-- Main Section -->
     <main>
       <section class="now-showing">
@@ -85,25 +77,30 @@
         $movies = json_decode(file_get_contents("http://localhost/CSAD_Project/Admin_side/movie_api.php"), true); //Remember to change this to the correct path
                                                                                                                                                                           //This path is for my PC only
         if ($movies['success']) {
-            $latestMovies = array_slice($movies['movies'], 0, 5);
-    
-            foreach ($latestMovies as $movie) {
-                echo "<div class='movie-post'>";
-                echo "<img src='" . htmlspecialchars($movie['cover']) . "' alt='" . htmlspecialchars($movie['title']) . " Poster' />";
-                echo "<div class='movie-info'>";
-                echo "<h2>" . htmlspecialchars($movie['title']) . "</h2>";
-                echo "<p>Rating: " . htmlspecialchars($movie['rating']) . "</p>";
-                echo "<p>Runtime: " . htmlspecialchars($movie['runtime']) . " mins</p>";
-                echo "<p>Genre: " . htmlspecialchars($movie['genre']) . "</p>";
-                echo "<a href='movie_details.php?id=" . urlencode($movie['id']) . "' class='button'>Book Now</a>";
-                echo "</div>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>No movies available</p>";
-        }
+          // Sort movies by ID in descending order (latest movies first)
+          usort($movies['movies'], function ($a, $b) {
+              return $b['id'] - $a['id']; // Compare IDs numerically
+          });
+      
+          // Get the latest 5 movies
+          $latestMovies = array_slice($movies['movies'], 0, 5);
+      
+          foreach ($latestMovies as $movie) {
+              echo "<div class='movie-post'>";
+              echo "<img src='" . htmlspecialchars($movie['cover']) . "' alt='" . htmlspecialchars($movie['title']) . " Poster' />";
+              echo "<div class='movie-info'>";
+              echo "<h2>" . htmlspecialchars($movie['title']) . "</h2>";
+              echo "<p>Rating: " . htmlspecialchars($movie['rating']) . "</p>";
+              echo "<p>Runtime: " . htmlspecialchars($movie['runtime']) . " mins</p>";
+              echo "<p>Genre: " . htmlspecialchars($movie['genre']) . "</p>";
+              echo "<a href='movie_details.php?id=" . urlencode($movie['id']) . "' class='button'>Book Now</a>";
+              echo "</div>";
+              echo "</div>";
+          }
+      } else {
+          echo "<p>No movies available</p>";
+      }                                                                                                                                                            
         ?>
-
         </div>
       </section>
     </main>

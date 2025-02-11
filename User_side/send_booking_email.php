@@ -8,9 +8,9 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Include PHPMailer classes
-require 'C:\xampp\htdocs\CSAD_project_main\vendor\phpmailer\phpmailer\src\Exception.php';
-require 'C:\xampp\htdocs\CSAD_project_main\vendor\phpmailer\phpmailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\CSAD_project_main\vendor\phpmailer\phpmailer\src\SMTP.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/Exception.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = $_POST['email'];

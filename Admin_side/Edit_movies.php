@@ -11,12 +11,11 @@
 <div class="navbar">
     <img src="static_image/logo.png" alt="Logo">
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Movies</a>
-        <a href="#">Cinemas</a>
-        <a href="#">Experiences</a>
-        <a href="#">Shop</a>
-        <a href="#">Events Booking</a>
+    <a href="../User_side/main_page.php">Home</a>
+        <a href="../User_side/moviesection.php">Movies</a>
+        <a href="../User_side/cinemas.html">Cinemas</a>
+        <a href="../User_side/experiences.html">Experiences</a>
+        <a href="../User_side/events_booking.php">Events Booking</a>
     </nav>
 </div>
 
@@ -49,7 +48,6 @@
             echo "    </div>";
             echo "    <div class='movie-buttons'>";
             echo "        <button class='details-btn' onclick=\"location.href='Edit_details.php?id=" . urlencode($movie['id']) . "'\">Details</button>";
-            echo "        <button class='time-btn' onclick=\"location.href='Edit_times.php?movie_id=" . urlencode($movie['id']) . "'\">Time</button>";
             echo "    </div>";
             echo "</div>";
         }

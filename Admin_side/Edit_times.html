@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Movie Dates and Time</title>
+    <link rel="stylesheet" href="CSS/Add_movie.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+
+<!-- Back Button -->
+<button class="back-button" onclick="document.location='Edit_movies.html'">Back to Edit</button>
+
+<!-- Headline -->
+<h1>Edit Movie Dates and Time</h1>
+
+<div class="movie-form">
+            <div class="form-group">
+        <!-- Dropdown for Theaters -->
+        <label class="dropdown-title">Edit Theaters</label>
+        <div class="dropdown multi-select">
+            <div class="select">
+                <span class="selected">Select Theaters</span>
+                <div class="caret"></div>
+            </div>
+            <ul class="menu">
+                <li><input type="checkbox" value="Theater 1"> Theater 1</li>
+                <li><input type="checkbox" value="Theater 2"> Theater 2</li>
+                <li><input type="checkbox" value="Theater 3"> Theater 3</li>
+                <li><input type="checkbox" value="Theater 4"> Theater 4</li>
+            </ul>
+        </div>
+
+        <!-- Date and Time Picker -->
+        <label class="dropdown-title">Edit Dates and Times</label>
+        <div class="form-group">
+            <input type="text" id="dateTimePicker" placeholder="Select Dates and Times">
+        </div>
+        <button class="add-button">Update</button>
+    </div>
+        
+    <!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    // Initialize Flatpickr for date and time selection
+    document.addEventListener("DOMContentLoaded", function() {
+        flatpickr("#dateTimePicker", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+            mode: "multiple",
+            time_24hr: true,
+            weekNumbers: true,
+            minDate: "today"
+        });
+    });
+</script>
+
+<script>
+    // Dropdown functionality
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        const select = dropdown.querySelector('.select');
+        const caret = dropdown.querySelector('.caret');
+        const menu = dropdown.querySelector('.menu');
+        const selected = dropdown.querySelector('.selected');
+
+        select.addEventListener('click', () => {
+            menu.classList.toggle('menu-open');
+            caret.classList.toggle('caret-rotate');
+        });
+
+        menu.querySelectorAll('li').forEach(option => {
+            option.addEventListener('click', () => {
+                if (dropdown.classList.contains('single-select')) {
+                    selected.textContent = option.textContent;
+                    menu.querySelectorAll('li').forEach(opt => opt.classList.remove('active'));
+                    option.classList.add('active');
+                } else if (dropdown.classList.contains('multi-select')) {
+                    const checkbox = option.querySelector('input[type="checkbox"]');
+                    checkbox.checked = !checkbox.checked;
+
+                    const selectedOptions = Array.from(menu.querySelectorAll('input:checked'))
+                        .map(checkbox => checkbox.value);
+
+                    selected.textContent = selectedOptions.length > 0 
+                        ? selectedOptions.join(', ') 
+                        : 'Select Theaters';
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
