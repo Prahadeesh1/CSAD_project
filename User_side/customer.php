@@ -286,6 +286,10 @@ if (isset($_GET['id'], $_GET['seats'], $_GET['price'], $_GET['date'], $_GET['tim
         })
         .catch(error => console.error("Email sending failed:", error));
       });
+
+      buttonReturn.addEventListener("click", function () {
+        window.history.back();
+      });
     });
   </script>
   </body>
